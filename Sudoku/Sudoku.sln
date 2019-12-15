@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.GUI", "Sudoku\Sudoku.GUI.csproj", "{03E810E9-E829-4451-AB17-3D163D26608E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Engine", "Sudoku.Engine\Sudoku.Engine.csproj", "{3FF754FD-90A9-4E36-89B9-4ECF8644E63A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Tests", "Sudoku.Tests\Sudoku.Tests.csproj", "{D2ED3870-D0FB-4511-A893-87AE2526EA50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03E810E9-E829-4451-AB17-3D163D26608E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03E810E9-E829-4451-AB17-3D163D26608E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03E810E9-E829-4451-AB17-3D163D26608E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03E810E9-E829-4451-AB17-3D163D26608E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF754FD-90A9-4E36-89B9-4ECF8644E63A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF754FD-90A9-4E36-89B9-4ECF8644E63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF754FD-90A9-4E36-89B9-4ECF8644E63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF754FD-90A9-4E36-89B9-4ECF8644E63A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2ED3870-D0FB-4511-A893-87AE2526EA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ED3870-D0FB-4511-A893-87AE2526EA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ED3870-D0FB-4511-A893-87AE2526EA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ED3870-D0FB-4511-A893-87AE2526EA50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {227E96F2-97EA-4940-AD95-76224EDE1573}
+	EndGlobalSection
+EndGlobal
