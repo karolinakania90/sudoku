@@ -527,5 +527,105 @@ namespace Sudoku.GUI
             int number = Int32.Parse(CheckString(Button_8_8.Content.ToString()));
             Button_8_8.Content = Plus(number).ToString();
         }
+
+        //NewGame
+
+        public int hours = 0;
+        public int minutes = 0;
+        public int sekends = 0;
+        private void NewGame_Click(object sender, RoutedEventArgs e)
+        {
+            if ((string)NewGame.Content == "New Game")
+            {
+                NewGame.Content = "End Game";
+                Curtain.Visibility = Visibility.Hidden;
+                TimeSekends();
+            }
+            else
+            {
+                Curtain.Visibility = Visibility.Visible;
+                Text.Visibility = Visibility.Visible;
+                Information.Visibility = Visibility.Visible;
+                YourTime.Visibility = Visibility.Visible;
+                Information.Content = "Tu informacja";
+                YourTime.Content = CheckTimeHours(hours) + " : " + CheckTimeMinutes(minutes) + " : " + CheckTimeSekends(sekends);
+                NewGame.Visibility = Visibility.Hidden;
+            }
+        }
+
+        //Timer
+
+        private async void TimeSekends()
+        {
+            while (sekends < 59)
+            {
+                await Task.Delay(1000);
+                sekends++;
+                Sekends.Content = CheckTimeSekends(sekends);
+            }
+            sekends = 0;
+            TimeMinutes();
+        }
+        private void TimeMinutes()
+        {
+            minutes++;
+            Minutes.Content = CheckTimeMinutes(minutes);
+            TimeSekends();
+        }
+
+        private void TimeHours()
+        {
+            hours++;
+            Hours.Content = CheckTimeHours(hours);
+            TimeSekends();
+        }
+        private string CheckTimeHours(int THours)
+        {
+            string TextHours;
+            if (THours < 10)
+            {
+                TextHours = "0" + THours.ToString();
+            }
+            else
+            {
+                TextHours = "0" + THours.ToString();
+            }
+            return TextHours;
+        }
+        private string CheckTimeMinutes(int TMinutes)
+        {
+            string TextMinutes;
+            if (TMinutes < 60)
+            {
+                if (TMinutes < 10)
+                {
+                    TextMinutes = "0" + TMinutes.ToString();
+                }
+                else
+                {
+                    TextMinutes = TMinutes.ToString();
+                }
+            }
+            else
+            {
+                minutes = 0;
+                TextMinutes = "00";
+                TimeHours();
+            }
+            return TextMinutes;
+        }
+        private string CheckTimeSekends(int TSekends)
+        {
+            string TextSekends;
+            if (sekends < 10)
+            {
+                TextSekends = "0" + sekends.ToString();
+            }
+            else
+            {
+                TextSekends = sekends.ToString();
+            }
+            return TextSekends;
+        }
     }
 }
