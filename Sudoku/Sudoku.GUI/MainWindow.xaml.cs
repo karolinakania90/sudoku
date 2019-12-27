@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sudoku.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -657,7 +658,7 @@ namespace Sudoku.GUI
             PaintInitial(Int32.Parse(Button_0_0.Name.Split('_')[1]), Int32.Parse(Button_0_0.Name.Split('_')[2]));
         }
         private void Button_1_0_MouseMove(object sender, MouseEventArgs e)
-        {
+        {          
             Paint(Int32.Parse(Button_1_0.Name.Split('_')[1]), Int32.Parse(Button_1_0.Name.Split('_')[2]));
         }
         private void Button_1_0_MouseLeave(object sender, MouseEventArgs e)

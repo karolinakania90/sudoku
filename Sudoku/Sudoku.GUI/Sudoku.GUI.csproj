@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sudoku.Engine\Sudoku.Engine.csproj">
+      <Project>{3ff754fd-90a9-4e36-89b9-4ecf8644e63a}</Project>
+      <Name>Sudoku.Engine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

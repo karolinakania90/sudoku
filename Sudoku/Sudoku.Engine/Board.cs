@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace Sudoku.Engine
 {
-    public class Board
+    internal class Board
     {
+        private int[,] sudokuFields;
 
+        public Board()
+        {
+            sudokuFields = new int[9, 9];
+        }
+
+        public void SetField(int x, int y, int value)
+        {
+            sudokuFields[x, y] = value;
+        }
+
+        public int[,] GetCurrentFields()
+        {
+            return sudokuFields;
+        }
     }
 }

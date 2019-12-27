@@ -35,10 +35,5 @@ namespace Sudoku.Engine
         {
 
         }
-
-        public Board GetCurrentBoard()
-        {
-            return null;
-        }
     }
 }
