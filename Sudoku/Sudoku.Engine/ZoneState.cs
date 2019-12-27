@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sudoku.Engine
 {
-    public class Class1
+    public enum  ZoneState
     {
+        Ok,
+        Fail
     }
 }
