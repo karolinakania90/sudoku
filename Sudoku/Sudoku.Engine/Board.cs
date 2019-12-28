@@ -15,9 +15,9 @@ namespace Sudoku.Engine
             sudokuFields = new int[9, 9];
         }
 
-        public void SetField(int x, int y, int value)
+        public void SetField(int y, int x, int value)
         {
-            sudokuFields[x, y] = value;
+            sudokuFields[y, x] = value;
         }
 
         public int[,] GetCurrentFields()
