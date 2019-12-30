@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Sudoku.GUI
 {
@@ -22,6 +23,7 @@ namespace Sudoku.GUI
     public partial class MainWindow : Window
     {
         Button[,] tableButtons;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -140,6 +142,7 @@ namespace Sudoku.GUI
         }
 
         // Paint squares
+
         public void Paint(int Column, int Poem)
         {
             //Button_0_0 -> Button_[kolumna]_[wiersz]
@@ -242,7 +245,9 @@ namespace Sudoku.GUI
         private int minutes = 0;
         private int sekends = 0;
 
-        //private Game Game = new Game();
+        DispatcherTimer timer;
+
+        private Game Game = new Game();
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
@@ -250,10 +255,10 @@ namespace Sudoku.GUI
             {
                 NewGame.Content = "End Game";
                 Curtain.Visibility = Visibility.Hidden;
-                TimeSekends();
 
                 // Engine.StartGame
-                //Game.StartGame();
+                Game.StartGame();
+                Start();
             }
             else
             {
@@ -266,36 +271,45 @@ namespace Sudoku.GUI
                 NewGame.Visibility = Visibility.Hidden;
 
                 // Engine.EndGame
-                //Game.StartGame();
+                Game.EndGame();
+                timer.Stop();
             }
         }
 
         //Timer
-
-        private async void TimeSekends()
+        private void Start()
         {
-            while (sekends < 59)
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += TimeSekends;
+            timer.Start();
+        }
+        private void TimeSekends(object sender, EventArgs e)
+        {
+            if (sekends < 59)
             {
-                await Task.Delay(1000);
                 sekends++;
                 Sekends.Content = $"{sekends:D2}";
             }
-            sekends = 0;
-            TimeMinutes();
-        }
-
-        private void TimeMinutes()
-        {
-            minutes++;
-            Minutes.Content = $"{minutes:D2}";
-            TimeSekends();
-        }
-
-        private void TimeHours()
-        {
-            hours++;
-            Hours.Content = $"{hours:D2}";
-            TimeSekends();
+            else
+            {
+                if (minutes < 59)
+                {
+                    sekends = 0;
+                    Sekends.Content = $"{sekends:D2}";
+                    minutes++;
+                    Minutes.Content = $"{minutes:D2}";
+                }
+                else
+                {
+                    sekends = 0;
+                    Sekends.Content = $"{sekends:D2}";
+                    minutes = 0;
+                    Minutes.Content = $"{minutes:D2}";
+                    hours++;
+                    Hours.Content = $"{hours:D2}";
+                }
+            }
         }
     }
 }
