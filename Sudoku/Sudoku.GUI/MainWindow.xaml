@@ -88,7 +88,7 @@
         <Button x:Name="Button_6_8" Content="" HorizontalAlignment="Left" Margin="525,618,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
         <Button x:Name="Button_7_8" Content="" HorizontalAlignment="Left" Margin="588,618,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
         <Button x:Name="Button_8_8" Content="" HorizontalAlignment="Left" Margin="651,618,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
-        <Button x:Name="NewGame" Content="New Game" HorizontalAlignment="Left" Margin="330,678,0,0" VerticalAlignment="Top" Width="100" Click="NewGame_Click" FontSize="18"/>
+        <Button x:Name="NewGame" Content="New Game" HorizontalAlignment="Left" Margin="240,678,0,0" VerticalAlignment="Top" Width="100" Click="NewGame_Click" FontSize="18"/>
         <Rectangle x:Name="Curtain" Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="29,2,0,55.4" Width="692" Panel.ZIndex="10"/>
         <Label x:Name="Hours" Content="00" HorizontalAlignment="Left" Margin="307,17,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="Minutes" Content="00" HorizontalAlignment="Left" Margin="369,17,0,0" VerticalAlignment="Top" FontSize="18"/>
@@ -98,5 +98,6 @@
         <Label x:Name="Information" Content="" HorizontalAlignment="Left" Margin="330,222,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="Text" Content="Twój czas : " HorizontalAlignment="Left" Margin="270,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="YourTime" Content="Label" HorizontalAlignment="Left" Margin="415,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
+        <Button x:Name="StartGame" Content="Start" Margin="414,678,240,0" VerticalAlignment="Top" FontSize="18" Click="StartGame_Click" IsEnabled="False"/>
     </Grid>
 </Window>

@@ -254,11 +254,10 @@ namespace Sudoku.GUI
             if ((string)NewGame.Content == "New Game")
             {
                 NewGame.Content = "End Game";
-                Curtain.Visibility = Visibility.Hidden;
+                StartGame.IsEnabled = true;
 
                 // Engine.StartGame
                 Game.StartGame();
-                Start();
             }
             else
             {
@@ -269,9 +268,36 @@ namespace Sudoku.GUI
                 Information.Content = "Tu informacja";
                 YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{sekends:D2}";
                 NewGame.Visibility = Visibility.Hidden;
+                StartGame.Visibility = Visibility.Hidden;
 
                 // Engine.EndGame
                 Game.EndGame();
+
+                //Timer start
+                timer.Stop();
+            }
+        }
+
+        private void StartGame_Click(object sender, RoutedEventArgs e)
+        {
+            if ((string)StartGame.Content == "Start")
+            {
+                StartGame.Content = "Pauza";
+                Curtain.Visibility = Visibility.Hidden;
+                Information.Visibility = Visibility.Hidden;
+                Information.Content = "";
+
+                //Timer start
+                Start();
+            }
+            else
+            {
+                StartGame.Content = "Start";
+                Curtain.Visibility = Visibility.Visible;
+                Information.Visibility = Visibility.Visible;
+                Information.Content = "Przerwa w grze";
+                
+                //Timer Stop
                 timer.Stop();
             }
         }
