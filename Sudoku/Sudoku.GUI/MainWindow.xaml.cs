@@ -23,13 +23,28 @@ namespace Sudoku.GUI
     public partial class MainWindow : Window
     {
         Button[,] tableButtons;
+        Border[,] tableBorders;
+
         private Game Game = new Game();
 
         public MainWindow()
         {
             InitializeComponent();
+            //---------------------
+
+            tableBorders = new Border[9, 9];
+            tableBorders[0, 0] = Border_0_0;
+            tableBorders[3, 0] = Border_3_0;
+            tableBorders[6, 0] = Border_6_0;
+            tableBorders[0, 3] = Border_0_3;
+            tableBorders[3, 3] = Border_3_3;
+            tableBorders[6, 3] = Border_6_3;
+            tableBorders[0, 6] = Border_0_6;
+            tableBorders[3, 6] = Border_3_6;
+            tableBorders[6, 6] = Border_6_6;
 
             //---------------------
+
             tableButtons = new Button[9, 9];
             tableButtons[0, 0] = Button_0_0;
             tableButtons[0, 1] = Button_0_1;
@@ -116,24 +131,24 @@ namespace Sudoku.GUI
 
         // Increase_in_value_button
 
-        public int Plus(int Value)
+        public int Plus(int value)
         {
-            Value++;
-            if (Value > 9)
+            value++;
+            if (value > 9)
             {
-                Value = 1;
+                value = 1;
             }
-            return Value;
+            return value;
         }
 
-        public string CheckString(string Value)
+        public string CheckString(string value)
         {
-            if (Value == "")
+            if (value == "")
             {
-                Value = "0";
-                return Value;
+                value = "0";
+                return value;
             }
-            return Value;
+            return value;
         }
 
         private void Increase_in_value(object sender, RoutedEventArgs e)
@@ -154,7 +169,7 @@ namespace Sudoku.GUI
 
         // Paint squares
 
-        public void Paint(int Column, int Poem)
+        public void Paint(int column, int row)
         {
             //Button_0_0 -> Button_[kolumna]_[wiersz]
             // y -> kolumna
@@ -163,22 +178,23 @@ namespace Sudoku.GUI
             {
                 for (int y = 0; y < tableButtons.Length - 72; y++)
                 {
-                    if (y == Column || x == Poem)
+                    if (y == column || x == row)
                     {
                         tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
                     }
                 }
             }
-            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
+            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
             {
-                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
+                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
                 {
                     tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                    tableBorders[PositionY(column), PositionX(row)].Visibility = Visibility.Visible;
                 }
             }
         }
 
-        public void PaintDefault(int Column, int Poem)
+        public void PaintDefault(int column, int row)
         {
             //Button_0_0 -> Button_[kolumna]_[wiersz]
             // y -> kolumna
@@ -187,33 +203,34 @@ namespace Sudoku.GUI
             {
                 for (int y = 0; y < tableButtons.Length - 72; y++)
                 {
-                    if (y == Column || x == Poem)
+                    if (y == column || x == row)
                     {
                         tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
                     }
                 }
             }
-            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
+            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
             {
-                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
+                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
                 {
                     tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                    tableBorders[PositionY(column), PositionX(row)].Visibility = Visibility.Hidden;
                 }
             }
         }
 
-        public int PositionY(int Column)
+        public int PositionY(int column)
         {
             int y = 0;
-            if (Column > -1 && Column < 3)
+            if (column > -1 && column < 3)
             {
                 y = 0;
             }
-            if (Column > 2 && Column < 6)
+            if (column > 2 && column < 6)
             {
                 y = 3;
             }
-            if (Column > 5 && Column < 9)
+            if (column > 5 && column < 9)
             {
                 y = 6;
             }
@@ -329,21 +346,21 @@ namespace Sudoku.GUI
             if (seconds < 59)
             {
                 seconds++;
-                Sekends.Content = $"{seconds:D2}";
+                Seconds.Content = $"{seconds:D2}";
             }
             else
             {
                 if (minutes < 59)
                 {
                     seconds = 0;
-                    Sekends.Content = $"{seconds:D2}";
+                    Seconds.Content = $"{seconds:D2}";
                     minutes++;
                     Minutes.Content = $"{minutes:D2}";
                 }
                 else
                 {
                     seconds = 0;
-                    Sekends.Content = $"{seconds:D2}";
+                    Seconds.Content = $"{seconds:D2}";
                     minutes = 0;
                     Minutes.Content = $"{minutes:D2}";
                     hours++;
