@@ -220,18 +220,18 @@ namespace Sudoku.GUI
             return y;
         }
 
-        public int PositionX(int Poem)
+        public int PositionX(int row)
         {
             int x = 0;
-            if (Poem > -1 && Poem < 3)
+            if (row > -1 && row < 3)
             {
                 x = 0;
             }
-            if (Poem > 2 && Poem < 6)
+            if (row > 2 && row < 6)
             {
                 x = 3;
             }
-            if (Poem > 5 && Poem < 9)
+            if (row > 5 && row < 9)
             {
                 x = 6;
             }
