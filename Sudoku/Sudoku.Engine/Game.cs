@@ -34,7 +34,7 @@ namespace Sudoku.Engine
 
         public bool EndGame()
         {
-           return board.ExistsUniqueSolution();
+            return board.ExistsUniqueSolution();
         }
 
         public void SetField(string x, string y, int value)
@@ -45,6 +45,41 @@ namespace Sudoku.Engine
         public bool ValidateGame()
         {
             return board.IsValid;
+        }
+
+
+        /// <summary>
+        /// Returns current game board with currently filled values
+        /// </summary>
+        /// <returns></returns>
+        public int[,] CurrentGameBoard()
+        {
+            int[,] gameBoard = new int[9, 9];
+
+            var boardString = board.ToString().Replace(" ", "").ToArray().Where(c => c != '\n').ToList();
+
+            int row = 0;
+            int column = 0;
+
+            for (var i = 0; i < boardString.Count; i++)
+            {
+                if (i != 0 && i % 9 == 0)
+                {
+                    row++;
+                    column = 0;
+                }
+
+                if (boardString[i] == '-')
+                {
+                    boardString[i] = '0';
+                }
+
+                gameBoard[row, column] = Int32.Parse(boardString[i].ToString());
+                column++;
+
+            }
+
+            return gameBoard;
         }
     }
 }

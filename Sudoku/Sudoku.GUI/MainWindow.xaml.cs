@@ -268,6 +268,9 @@ namespace Sudoku.GUI
 
                 // Engine.StartGame
                 Game = new Game(GameLevel.Easy);
+
+                // gets initial board
+                var currentGame = Game.CurrentGameBoard();
             }
             else
             {
