@@ -23,6 +23,7 @@ namespace Sudoku.GUI
     public partial class MainWindow : Window
     {
         Button[,] tableButtons;
+        private Game Game = new Game();
 
         public MainWindow()
         {
@@ -118,7 +119,8 @@ namespace Sudoku.GUI
         public int Plus(int Value)
         {
             Value++;
-            if (Value > 9) {
+            if (Value > 9)
+            {
                 Value = 1;
             }
             return Value;
@@ -136,9 +138,18 @@ namespace Sudoku.GUI
 
         private void Increase_in_value(object sender, RoutedEventArgs e)
         {
-            Button ButtonClick = sender as Button;
-            int number = Int32.Parse(CheckString(ButtonClick.Content.ToString()));
-            ButtonClick.Content = Plus(number).ToString();
+            Button buttonClick = sender as Button;
+            int number = Int32.Parse(CheckString(buttonClick.Content.ToString()));
+            number = Plus(number);
+            buttonClick.Content = number.ToString();
+
+            UpdateGameBasedOnButton(buttonClick, number);
+        }
+
+        private void UpdateGameBasedOnButton(Button currentButton, int number)
+        {
+            var buttonLocation = currentButton.Name.Replace("Button_", "").Split('_');
+            Game.SetField(buttonLocation[1], buttonLocation[0], number);
         }
 
         // Paint squares
@@ -154,15 +165,15 @@ namespace Sudoku.GUI
                 {
                     if (y == Column || x == Poem)
                     {
-                        tableButtons[y,x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
                     }
                 }
             }
-            for (int x = PositionX(Poem); x < (PositionX(Poem)+3); x++)
+            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
             {
-                for (int y = PositionY(Column); y < (PositionY(Column)+3); y++)
+                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
                 {
-                     tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
                 }
             }
         }
@@ -174,11 +185,11 @@ namespace Sudoku.GUI
             // x -> wiersz
             for (int x = 0; x < tableButtons.Length - 72; x++)
             {
-                for (int y= 0; y < tableButtons.Length - 72; y++)
+                for (int y = 0; y < tableButtons.Length - 72; y++)
                 {
                     if (y == Column || x == Poem)
                     {
-                        tableButtons[y,x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
                     }
                 }
             }
@@ -194,7 +205,7 @@ namespace Sudoku.GUI
         public int PositionY(int Column)
         {
             int y = 0;
-            if(Column > -1 && Column < 3)
+            if (Column > -1 && Column < 3)
             {
                 y = 0;
             }
@@ -243,11 +254,10 @@ namespace Sudoku.GUI
 
         private int hours = 0;
         private int minutes = 0;
-        private int sekends = 0;
+        private int seconds = 0;
 
         DispatcherTimer timer;
 
-        private Game Game = new Game();
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
@@ -257,7 +267,7 @@ namespace Sudoku.GUI
                 StartGame.IsEnabled = true;
 
                 // Engine.StartGame
-                Game.StartGame();
+                Game = new Game(GameLevel.Easy);
             }
             else
             {
@@ -266,7 +276,7 @@ namespace Sudoku.GUI
                 Information.Visibility = Visibility.Visible;
                 YourTime.Visibility = Visibility.Visible;
                 Information.Content = "Tu informacja";
-                YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{sekends:D2}";
+                YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{seconds:D2}";
                 NewGame.Visibility = Visibility.Hidden;
                 StartGame.Visibility = Visibility.Hidden;
 
@@ -296,7 +306,7 @@ namespace Sudoku.GUI
                 Curtain.Visibility = Visibility.Visible;
                 Information.Visibility = Visibility.Visible;
                 Information.Content = "Przerwa w grze";
-                
+
                 //Timer Stop
                 timer.Stop();
             }
@@ -310,26 +320,27 @@ namespace Sudoku.GUI
             timer.Tick += TimeSekends;
             timer.Start();
         }
+
         private void TimeSekends(object sender, EventArgs e)
         {
-            if (sekends < 59)
+            if (seconds < 59)
             {
-                sekends++;
-                Sekends.Content = $"{sekends:D2}";
+                seconds++;
+                Sekends.Content = $"{seconds:D2}";
             }
             else
             {
                 if (minutes < 59)
                 {
-                    sekends = 0;
-                    Sekends.Content = $"{sekends:D2}";
+                    seconds = 0;
+                    Sekends.Content = $"{seconds:D2}";
                     minutes++;
                     Minutes.Content = $"{minutes:D2}";
                 }
                 else
                 {
-                    sekends = 0;
-                    Sekends.Content = $"{sekends:D2}";
+                    seconds = 0;
+                    Sekends.Content = $"{seconds:D2}";
                     minutes = 0;
                     Minutes.Content = $"{minutes:D2}";
                     hours++;
