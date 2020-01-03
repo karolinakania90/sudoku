@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku.GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="760" Width="760">
+        Title="MainWindow" Height="780" Width="760">
     <Grid>
         <Button x:Name="Button_0_0" Content="" HorizontalAlignment="Left" Margin="71,75,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
         <Button x:Name="Button_1_0" Content="" HorizontalAlignment="Left" Margin="134,75,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" Mouse.MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
@@ -88,15 +88,25 @@
         <Button x:Name="Button_6_8" Content="" HorizontalAlignment="Left" Margin="525,618,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
         <Button x:Name="Button_7_8" Content="" HorizontalAlignment="Left" Margin="588,618,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
         <Button x:Name="Button_8_8" Content="" HorizontalAlignment="Left" Margin="651,618,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_in_value" MouseMove="Change_background_color_MouseMove" MouseLeave="Change_background_color_MouseLeave"/>
-        <Button x:Name="NewGame" Content="New Game" HorizontalAlignment="Left" Margin="330,678,0,0" VerticalAlignment="Top" Width="100" Click="NewGame_Click" FontSize="18"/>
+        <Button x:Name="NewGame" Content="New Game" HorizontalAlignment="Left" Margin="240,700,0,0" VerticalAlignment="Top" Width="100" Click="NewGame_Click" FontSize="18"/>
         <Rectangle x:Name="Curtain" Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="29,2,0,55.4" Width="692" Panel.ZIndex="10"/>
-        <Label x:Name="Hours" Content="00" HorizontalAlignment="Left" Margin="307,17,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label x:Name="Minutes" Content="00" HorizontalAlignment="Left" Margin="369,17,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label x:Name="Sekends" Content="00" HorizontalAlignment="Left" Margin="430,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.229,0.703" FontSize="18"/>
-        <Label Content=":" HorizontalAlignment="Left" Margin="344,17,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content=":" HorizontalAlignment="Left" Margin="408,17,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="Hours" Content="00" HorizontalAlignment="Left" Margin="307,7,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="Minutes" Content="00" HorizontalAlignment="Left" Margin="369,7,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="Seconds" Content="00" HorizontalAlignment="Left" Margin="430,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.229,0.703" FontSize="18"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="344,7,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="408,7,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="Information" Content="" HorizontalAlignment="Left" Margin="330,222,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="Text" Content="Twój czas : " HorizontalAlignment="Left" Margin="270,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="YourTime" Content="Label" HorizontalAlignment="Left" Margin="415,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
+        <Button x:Name="StartGame" Content="Start" Margin="415,700,238.6,0" VerticalAlignment="Top" FontSize="18" Click="StartGame_Click" IsEnabled="False"/>
+        <Border x:Name="Border_0_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_3_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_6_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_0_3" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,266,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_3_3" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,266,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_6_3" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,266,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_0_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_3_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_6_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
     </Grid>
 </Window>
