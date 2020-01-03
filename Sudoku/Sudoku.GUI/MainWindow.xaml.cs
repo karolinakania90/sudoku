@@ -29,7 +29,7 @@ namespace Sudoku.GUI
         public MainWindow()
         {
             InitializeComponent();
-            
+
 
             //---------------------
 
@@ -130,88 +130,88 @@ namespace Sudoku.GUI
 
             //---------------------
 
-            Sudoku = new int[9, 9];
-            Sudoku[0, 0] = 1;
-            Sudoku[0, 1] = 2;
-            Sudoku[0, 2] = 6;
-            Sudoku[0, 3] = 9;
-            Sudoku[0, 4] = 4;
-            Sudoku[0, 5] = 5;
-            Sudoku[0, 6] = 8;
-            Sudoku[0, 7] = 7;
-            Sudoku[0, 8] = 3;
-            Sudoku[1, 0] = 8;
-            Sudoku[1, 1] = 5;
-            Sudoku[1, 2] = 9;
-            Sudoku[1, 3] = 7;
-            Sudoku[1, 4] = 6;
-            Sudoku[1, 5] = 3;
-            Sudoku[1, 6] = 4;
-            Sudoku[1, 7] = 2;
-            Sudoku[1, 8] = 1;
-            Sudoku[2, 0] = 7;
-            Sudoku[2, 1] = 4;
-            Sudoku[2, 2] = 3;
-            Sudoku[2, 3] = 1;
-            Sudoku[2, 4] = 8;
-            Sudoku[2, 5] = 2;
-            Sudoku[2, 6] = 5;
-            Sudoku[2, 7] = 6;
-            Sudoku[2, 8] = 9;
-            Sudoku[3, 0] = 6;
-            Sudoku[3, 1] = 7;
-            Sudoku[3, 2] = 8;
-            Sudoku[3, 3] = 5;
-            Sudoku[3, 4] = 1;
-            Sudoku[3, 5] = 9;
-            Sudoku[3, 6] = 2;
-            Sudoku[3, 7] = 3;
-            Sudoku[3, 8] = 4;
-            Sudoku[4, 0] = 3;
-            Sudoku[4, 1] = 9;
-            Sudoku[4, 2] = 4;
-            Sudoku[4, 3] = 2;
-            Sudoku[4, 4] = 7;
-            Sudoku[4, 5] = 8;
-            Sudoku[4, 6] = 6;
-            Sudoku[4, 7] = 1;
-            Sudoku[4, 8] = 5;
-            Sudoku[5, 0] = 2;
-            Sudoku[5, 1] = 1;
-            Sudoku[5, 2] = 5;
-            Sudoku[5, 3] = 6;
-            Sudoku[5, 4] = 3;
-            Sudoku[5, 5] = 4;
-            Sudoku[5, 6] = 7;
-            Sudoku[5, 7] = 9;
-            Sudoku[5, 8] = 8;
-            Sudoku[6, 0] = 9;
-            Sudoku[6, 1] = 6;
-            Sudoku[6, 2] = 2;
-            Sudoku[6, 3] = 8;
-            Sudoku[6, 4] = 5;
-            Sudoku[6, 5] = 1;
-            Sudoku[6, 6] = 3;
-            Sudoku[6, 7] = 4;
-            Sudoku[6, 8] = 7;
-            Sudoku[7, 0] = 5;
-            Sudoku[7, 1] = 3;
-            Sudoku[7, 2] = 1;
-            Sudoku[7, 3] = 4;
-            Sudoku[7, 4] = 2;
-            Sudoku[7, 5] = 7;
-            Sudoku[7, 6] = 9;
-            Sudoku[7, 7] = 8;
-            Sudoku[7, 8] = 6;
-            Sudoku[8, 0] = 4;
-            Sudoku[8, 1] = 8;
-            Sudoku[8, 2] = 7;
-            Sudoku[8, 3] = 3;
-            Sudoku[8, 4] = 9;
-            Sudoku[8, 5] = 6;
-            Sudoku[8, 6] = 1;
-            Sudoku[8, 7] = 5;
-            Sudoku[8, 8] = 2;
+            //Sudoku = new int[9, 9];
+            //Sudoku[0, 0] = 1;
+            //Sudoku[0, 1] = 2;
+            //Sudoku[0, 2] = 6;
+            //Sudoku[0, 3] = 9;
+            //Sudoku[0, 4] = 4;
+            //Sudoku[0, 5] = 5;
+            //Sudoku[0, 6] = 8;
+            //Sudoku[0, 7] = 7;
+            //Sudoku[0, 8] = 3;
+            //Sudoku[1, 0] = 8;
+            //Sudoku[1, 1] = 5;
+            //Sudoku[1, 2] = 9;
+            //Sudoku[1, 3] = 7;
+            //Sudoku[1, 4] = 6;
+            //Sudoku[1, 5] = 3;
+            //Sudoku[1, 6] = 4;
+            //Sudoku[1, 7] = 2;
+            //Sudoku[1, 8] = 1;
+            //Sudoku[2, 0] = 7;
+            //Sudoku[2, 1] = 4;
+            //Sudoku[2, 2] = 3;
+            //Sudoku[2, 3] = 1;
+            //Sudoku[2, 4] = 8;
+            //Sudoku[2, 5] = 2;
+            //Sudoku[2, 6] = 5;
+            //Sudoku[2, 7] = 6;
+            //Sudoku[2, 8] = 9;
+            //Sudoku[3, 0] = 6;
+            //Sudoku[3, 1] = 7;
+            //Sudoku[3, 2] = 8;
+            //Sudoku[3, 3] = 5;
+            //Sudoku[3, 4] = 1;
+            //Sudoku[3, 5] = 9;
+            //Sudoku[3, 6] = 2;
+            //Sudoku[3, 7] = 3;
+            //Sudoku[3, 8] = 4;
+            //Sudoku[4, 0] = 3;
+            //Sudoku[4, 1] = 9;
+            //Sudoku[4, 2] = 4;
+            //Sudoku[4, 3] = 2;
+            //Sudoku[4, 4] = 7;
+            //Sudoku[4, 5] = 8;
+            //Sudoku[4, 6] = 6;
+            //Sudoku[4, 7] = 1;
+            //Sudoku[4, 8] = 5;
+            //Sudoku[5, 0] = 2;
+            //Sudoku[5, 1] = 1;
+            //Sudoku[5, 2] = 5;
+            //Sudoku[5, 3] = 6;
+            //Sudoku[5, 4] = 3;
+            //Sudoku[5, 5] = 4;
+            //Sudoku[5, 6] = 7;
+            //Sudoku[5, 7] = 9;
+            //Sudoku[5, 8] = 8;
+            //Sudoku[6, 0] = 9;
+            //Sudoku[6, 1] = 6;
+            //Sudoku[6, 2] = 2;
+            //Sudoku[6, 3] = 8;
+            //Sudoku[6, 4] = 5;
+            //Sudoku[6, 5] = 1;
+            //Sudoku[6, 6] = 3;
+            //Sudoku[6, 7] = 4;
+            //Sudoku[6, 8] = 7;
+            //Sudoku[7, 0] = 5;
+            //Sudoku[7, 1] = 3;
+            //Sudoku[7, 2] = 1;
+            //Sudoku[7, 3] = 4;
+            //Sudoku[7, 4] = 2;
+            //Sudoku[7, 5] = 7;
+            //Sudoku[7, 6] = 9;
+            //Sudoku[7, 7] = 8;
+            //Sudoku[7, 8] = 6;
+            //Sudoku[8, 0] = 4;
+            //Sudoku[8, 1] = 8;
+            //Sudoku[8, 2] = 7;
+            //Sudoku[8, 3] = 3;
+            //Sudoku[8, 4] = 9;
+            //Sudoku[8, 5] = 6;
+            //Sudoku[8, 6] = 1;
+            //Sudoku[8, 7] = 5;
+            //Sudoku[8, 8] = 2;
         }
 
         // Loading values
@@ -219,6 +219,7 @@ namespace Sudoku.GUI
 
         private void StartGame_Board()
         {
+            Sudoku = Game.CurrentGameBoard();
             for (int x = 0; x < tableButtons.Length - 72; x++)
             {
                 for (int y = 0; y < tableButtons.Length - 72; y++)
@@ -250,20 +251,20 @@ namespace Sudoku.GUI
             int counter = 0;
             while (RandomY[4] == 0)
             {
-                 int randomY = new Random().Next(0, 9);
-                 for (int i = 0; i < 5; i++)
-                 {
-                     if (randomY == RandomY[i])
-                     {
-                         the_value_is = false;
-                     }
-                 }
-                 if (the_value_is == true)
-                 {
-                     RandomY[counter] = randomY;
-                     counter++;
-                 }
-                 the_value_is = true;
+                int randomY = new Random().Next(0, 9);
+                for (int i = 0; i < 5; i++)
+                {
+                    if (randomY == RandomY[i])
+                    {
+                        the_value_is = false;
+                    }
+                }
+                if (the_value_is == true)
+                {
+                    RandomY[counter] = randomY;
+                    counter++;
+                }
+                the_value_is = true;
             }
         }
 
@@ -272,7 +273,8 @@ namespace Sudoku.GUI
         public int Plus(int Value)
         {
             Value++;
-            if (Value > 9) {
+            if (Value > 9)
+            {
                 Value = 1;
             }
             return Value;
@@ -291,7 +293,7 @@ namespace Sudoku.GUI
         private void Increase_in_value(object sender, RoutedEventArgs e)
         {
             Button ButtonClick = sender as Button;
-            if(!(ButtonClick.BorderBrush == Brushes.Blue))
+            if (!(ButtonClick.BorderBrush == Brushes.Blue))
             {
                 int number = Int32.Parse(CheckString(ButtonClick.Content.ToString()));
                 ButtonClick.Content = Plus(number).ToString();
@@ -338,7 +340,7 @@ namespace Sudoku.GUI
             // x -> wiersz
             Paint_for_click(Int32.Parse(Value.Name.Split('_')[1]), Int32.Parse(Value.Name.Split('_')[2]));
 
-            for (int x = 0; x < tableButtons.Length - 72; x++) 
+            for (int x = 0; x < tableButtons.Length - 72; x++)
             {
                 for (int y = 0; y < tableButtons.Length - 72; y++)
                 {
@@ -402,11 +404,11 @@ namespace Sudoku.GUI
                     }
                 }
             }
-            for (int x = PositionX(Poem); x < (PositionX(Poem)+3); x++)
+            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
             {
-                for (int y = PositionY(Column); y < (PositionY(Column)+3); y++)
+                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
                 {
-                     tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
                 }
             }
         }
@@ -418,11 +420,11 @@ namespace Sudoku.GUI
             // x -> wiersz
             for (int x = 0; x < tableButtons.Length - 72; x++)
             {
-                for (int y= 0; y < tableButtons.Length - 72; y++)
+                for (int y = 0; y < tableButtons.Length - 72; y++)
                 {
                     if (y == Column || x == Poem)
                     {
-                            tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
                     }
                 }
             }
@@ -438,7 +440,7 @@ namespace Sudoku.GUI
         public int PositionY(int Column)
         {
             int y = 0;
-            if(Column > -1 && Column < 3)
+            if (Column > -1 && Column < 3)
             {
                 y = 0;
             }
@@ -491,7 +493,7 @@ namespace Sudoku.GUI
 
         DispatcherTimer timer;
 
-        private Game Game = new Game();
+        private Game Game;
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
@@ -500,6 +502,7 @@ namespace Sudoku.GUI
                 NewGame.Content = "End Game";
                 StartGame.IsEnabled = true;
 
+                Game = new Game(GameLevel.Hard);
                 // Engine.StartGame
                 //Game.StartGame();
                 StartGame_Board();
@@ -541,7 +544,7 @@ namespace Sudoku.GUI
                 Curtain.Visibility = Visibility.Visible;
                 Information.Visibility = Visibility.Visible;
                 Information.Content = "Przerwa w grze";
-                
+
                 //Timer Stop
                 timer.Stop();
             }
