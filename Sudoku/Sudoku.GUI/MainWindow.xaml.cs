@@ -22,9 +22,15 @@ namespace Sudoku.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        Button[,] tableButtons;
-        Border[,] tableBorders;
-        int[,] Sudoku;
+        private Button[,] tableButtons;
+        private Border[,] tableBorders;
+        private int[,] sudoku;
+        private int hours = 0;
+        private int minutes = 0;
+        private int sekends = 0;
+        private DispatcherTimer timer;
+        private Game game;
+        private string level;
 
         public MainWindow()
         {
@@ -128,412 +134,42 @@ namespace Sudoku.GUI
             tableButtons[8, 7] = Button_8_7;
             tableButtons[8, 8] = Button_8_8;
 
-            //---------------------
-
-            //Sudoku = new int[9, 9];
-            //Sudoku[0, 0] = 1;
-            //Sudoku[0, 1] = 2;
-            //Sudoku[0, 2] = 6;
-            //Sudoku[0, 3] = 9;
-            //Sudoku[0, 4] = 4;
-            //Sudoku[0, 5] = 5;
-            //Sudoku[0, 6] = 8;
-            //Sudoku[0, 7] = 7;
-            //Sudoku[0, 8] = 3;
-            //Sudoku[1, 0] = 8;
-            //Sudoku[1, 1] = 5;
-            //Sudoku[1, 2] = 9;
-            //Sudoku[1, 3] = 7;
-            //Sudoku[1, 4] = 6;
-            //Sudoku[1, 5] = 3;
-            //Sudoku[1, 6] = 4;
-            //Sudoku[1, 7] = 2;
-            //Sudoku[1, 8] = 1;
-            //Sudoku[2, 0] = 7;
-            //Sudoku[2, 1] = 4;
-            //Sudoku[2, 2] = 3;
-            //Sudoku[2, 3] = 1;
-            //Sudoku[2, 4] = 8;
-            //Sudoku[2, 5] = 2;
-            //Sudoku[2, 6] = 5;
-            //Sudoku[2, 7] = 6;
-            //Sudoku[2, 8] = 9;
-            //Sudoku[3, 0] = 6;
-            //Sudoku[3, 1] = 7;
-            //Sudoku[3, 2] = 8;
-            //Sudoku[3, 3] = 5;
-            //Sudoku[3, 4] = 1;
-            //Sudoku[3, 5] = 9;
-            //Sudoku[3, 6] = 2;
-            //Sudoku[3, 7] = 3;
-            //Sudoku[3, 8] = 4;
-            //Sudoku[4, 0] = 3;
-            //Sudoku[4, 1] = 9;
-            //Sudoku[4, 2] = 4;
-            //Sudoku[4, 3] = 2;
-            //Sudoku[4, 4] = 7;
-            //Sudoku[4, 5] = 8;
-            //Sudoku[4, 6] = 6;
-            //Sudoku[4, 7] = 1;
-            //Sudoku[4, 8] = 5;
-            //Sudoku[5, 0] = 2;
-            //Sudoku[5, 1] = 1;
-            //Sudoku[5, 2] = 5;
-            //Sudoku[5, 3] = 6;
-            //Sudoku[5, 4] = 3;
-            //Sudoku[5, 5] = 4;
-            //Sudoku[5, 6] = 7;
-            //Sudoku[5, 7] = 9;
-            //Sudoku[5, 8] = 8;
-            //Sudoku[6, 0] = 9;
-            //Sudoku[6, 1] = 6;
-            //Sudoku[6, 2] = 2;
-            //Sudoku[6, 3] = 8;
-            //Sudoku[6, 4] = 5;
-            //Sudoku[6, 5] = 1;
-            //Sudoku[6, 6] = 3;
-            //Sudoku[6, 7] = 4;
-            //Sudoku[6, 8] = 7;
-            //Sudoku[7, 0] = 5;
-            //Sudoku[7, 1] = 3;
-            //Sudoku[7, 2] = 1;
-            //Sudoku[7, 3] = 4;
-            //Sudoku[7, 4] = 2;
-            //Sudoku[7, 5] = 7;
-            //Sudoku[7, 6] = 9;
-            //Sudoku[7, 7] = 8;
-            //Sudoku[7, 8] = 6;
-            //Sudoku[8, 0] = 4;
-            //Sudoku[8, 1] = 8;
-            //Sudoku[8, 2] = 7;
-            //Sudoku[8, 3] = 3;
-            //Sudoku[8, 4] = 9;
-            //Sudoku[8, 5] = 6;
-            //Sudoku[8, 6] = 1;
-            //Sudoku[8, 7] = 5;
-            //Sudoku[8, 8] = 2;
+            //-----------------------
+            
+            Collapsed_Buttons();
         }
 
-        // Loading values
-
-
-        private void StartGame_Board()
-        {
-            Sudoku = Game.CurrentGameBoard();
-            for (int x = 0; x < tableButtons.Length - 72; x++)
-            {
-                for (int y = 0; y < tableButtons.Length - 72; y++)
-                {
-                    tableButtons[y, x].Content = Sudoku[x, y].ToString();
-                    tableButtons[y, x].BorderBrush = Brushes.Blue;
-                }
-            }
-            for (int x = 0; x < tableButtons.Length - 72; x++)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    RandomY[i] = 0;
-                }
-                Random_Y_Posicion();
-                for (int y = 0; y < 5; y++)
-                {
-                    tableButtons[RandomY[y], x].Content = "";
-                    tableButtons[RandomY[y], x].BorderBrush = Brushes.Gray;
-                }
-            }
-        }
-
-        int[] RandomY = new int[5];
-        bool the_value_is = true;
-
-        private void Random_Y_Posicion()
-        {
-            int counter = 0;
-            while (RandomY[4] == 0)
-            {
-                int randomY = new Random().Next(0, 9);
-                for (int i = 0; i < 5; i++)
-                {
-                    if (randomY == RandomY[i])
-                    {
-                        the_value_is = false;
-                    }
-                }
-                if (the_value_is == true)
-                {
-                    RandomY[counter] = randomY;
-                    counter++;
-                }
-                the_value_is = true;
-            }
-        }
-
-        // Increase_in_value_button
-
-        public int Plus(int Value)
-        {
-            Value++;
-            if (Value > 9)
-            {
-                Value = 1;
-            }
-            return Value;
-        }
-
-        public string CheckString(string Value)
-        {
-            if (Value == "")
-            {
-                Value = "0";
-                return Value;
-            }
-            return Value;
-        }
-
-        private void Increase_in_value(object sender, RoutedEventArgs e)
-        {
-            Button ButtonClick = sender as Button;
-            if (!(ButtonClick.BorderBrush == Brushes.Blue))
-            {
-                int number = Int32.Parse(CheckString(ButtonClick.Content.ToString()));
-                ButtonClick.Content = Plus(number).ToString();
-
-                // Check Value
-                Check_Value_Buttons_of_Click(Int32.Parse(ButtonClick.Name.Split('_')[1]), Int32.Parse(ButtonClick.Name.Split('_')[2]), ButtonClick);
-            }
-        }
-
-        // Check Value Buttons of Click
-
-        public void Paint_for_click(int Column, int Poem)
-        {
-            //Button_0_0 -> Button_[kolumna]_[wiersz]
-            // y -> kolumna
-            // x -> wiersz
-            for (int x = 0; x < tableButtons.Length - 72; x++)
-            {
-                for (int y = 0; y < tableButtons.Length - 72; y++)
-                {
-                    if (y == Column || x == Poem)
-                    {
-                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
-                    }
-                }
-            }
-            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
-            {
-                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
-                {
-                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
-                }
-            }
-        }
-
-        bool can;
-
-        public void Check_Value_Buttons_of_Click(int Column, int Poem, Button Value)
-        {
-            can = true;
-
-            //Button_0_0 -> Button_[kolumna]_[wiersz]
-            // y -> kolumna
-            // x -> wiersz
-            Paint_for_click(Int32.Parse(Value.Name.Split('_')[1]), Int32.Parse(Value.Name.Split('_')[2]));
-
-            for (int x = 0; x < tableButtons.Length - 72; x++)
-            {
-                for (int y = 0; y < tableButtons.Length - 72; y++)
-                {
-                    if (y == Column || x == Poem)
-                    {
-                        if (Value.Content.ToString() == tableButtons[y, x].Content.ToString() && Value != tableButtons[y, x])
-                        {
-                            tableBorders[PositionY(Column), PositionX(Poem)].Visibility = Visibility.Visible;
-                            tableBorders[PositionY(Column), PositionX(Poem)].BorderBrush = Brushes.Red;
-                            tableButtons[y, x].Background = Brushes.Red;
-                            can = false;
-                        }
-                        else
-                        {
-                            if (can == true)
-                            {
-                                tableBorders[PositionY(Column), PositionX(Poem)].Visibility = Visibility.Visible;
-                                tableBorders[PositionY(Column), PositionX(Poem)].BorderBrush = Brushes.Green;
-                            }
-                        }
-                    }
-                }
-            }
-            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
-            {
-                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
-                {
-                    if (Value.Content.ToString() == tableButtons[y, x].Content.ToString() && Value != tableButtons[y, x])
-                    {
-                        tableBorders[PositionY(Column), PositionX(Poem)].Visibility = Visibility.Visible;
-                        tableBorders[PositionY(Column), PositionX(Poem)].BorderBrush = Brushes.Red;
-                        tableButtons[y, x].Background = Brushes.Red;
-                        can = false;
-                    }
-                    else
-                    {
-                        if (can == true)
-                        {
-                            tableBorders[PositionY(Column), PositionX(Poem)].Visibility = Visibility.Visible;
-                            tableBorders[PositionY(Column), PositionX(Poem)].BorderBrush = Brushes.Green;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Paint squares
-
-        public void Paint(int Column, int Poem)
-        {
-            //Button_0_0 -> Button_[kolumna]_[wiersz]
-            // y -> kolumna
-            // x -> wiersz
-            for (int x = 0; x < tableButtons.Length - 72; x++)
-            {
-                for (int y = 0; y < tableButtons.Length - 72; y++)
-                {
-                    if (y == Column || x == Poem)
-                    {
-                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
-                    }
-                }
-            }
-            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
-            {
-                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
-                {
-                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
-                }
-            }
-        }
-
-        public void PaintDefault(int Column, int Poem)
-        {
-            //Button_0_0 -> Button_[kolumna]_[wiersz]
-            // y -> kolumna
-            // x -> wiersz
-            for (int x = 0; x < tableButtons.Length - 72; x++)
-            {
-                for (int y = 0; y < tableButtons.Length - 72; y++)
-                {
-                    if (y == Column || x == Poem)
-                    {
-                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
-                    }
-                }
-            }
-            for (int x = PositionX(Poem); x < (PositionX(Poem) + 3); x++)
-            {
-                for (int y = PositionY(Column); y < (PositionY(Column) + 3); y++)
-                {
-                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
-                }
-            }
-        }
-
-        public int PositionY(int Column)
-        {
-            int y = 0;
-            if (Column > -1 && Column < 3)
-            {
-                y = 0;
-            }
-            if (Column > 2 && Column < 6)
-            {
-                y = 3;
-            }
-            if (Column > 5 && Column < 9)
-            {
-                y = 6;
-            }
-            return y;
-        }
-
-        public int PositionX(int Poem)
-        {
-            int x = 0;
-            if (Poem > -1 && Poem < 3)
-            {
-                x = 0;
-            }
-            if (Poem > 2 && Poem < 6)
-            {
-                x = 3;
-            }
-            if (Poem > 5 && Poem < 9)
-            {
-                x = 6;
-            }
-            return x;
-        }
-
-        private void Change_background_color_MouseMove(object sender, MouseEventArgs e)
-        {
-            Button ButtonClick = sender as Button;
-            Paint(Int32.Parse(ButtonClick.Name.Split('_')[1]), Int32.Parse(ButtonClick.Name.Split('_')[2]));
-        }
-
-        private void Change_background_color_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Button ButtonClick = sender as Button;
-            PaintDefault(Int32.Parse(ButtonClick.Name.Split('_')[1]), Int32.Parse(ButtonClick.Name.Split('_')[2]));
-        }
-
-        //NewGame
-
-        private int hours = 0;
-        private int minutes = 0;
-        private int sekends = 0;
-
-        DispatcherTimer timer;
-
-        private Game Game;
-
-        private void NewGame_Click(object sender, RoutedEventArgs e)
-        {
-            if ((string)NewGame.Content == "New Game")
-            {
-                NewGame.Content = "End Game";
-                StartGame.IsEnabled = true;
-
-                Game = new Game(GameLevel.Hard);
-                // Engine.StartGame
-                //Game.StartGame();
-                StartGame_Board();
-            }
-            else
-            {
-                Curtain.Visibility = Visibility.Visible;
-                Text.Visibility = Visibility.Visible;
-                Information.Visibility = Visibility.Visible;
-                YourTime.Visibility = Visibility.Visible;
-                Information.Content = "Tu informacja";
-                YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{sekends:D2}";
-                NewGame.Visibility = Visibility.Hidden;
-                StartGame.Visibility = Visibility.Hidden;
-
-                // Engine.EndGame
-                Game.EndGame();
-
-                //Timer start
-                timer.Stop();
-            }
-        }
-
+        /// <summary>
+        /// StartGame
+        /// </summary
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
             if ((string)StartGame.Content == "Start")
             {
                 StartGame.Content = "Pauza";
-                Curtain.Visibility = Visibility.Hidden;
-                Information.Visibility = Visibility.Hidden;
-                Information.Content = "";
+                Show_Buttons();
+                Text.Visibility = Visibility.Collapsed;
+                Information.Visibility = Visibility.Collapsed;
+                YourTime.Visibility = Visibility.Collapsed;
+
+                level = Level.Text;
+
+                switch (level)
+                {
+                    case "Easy":
+                        game = new Game(GameLevel.Easy);
+                        break;
+                    case "Medium":
+                        game = new Game(GameLevel.Medium);
+                        break;
+                    case "Hard":
+                        game = new Game(GameLevel.Hard);
+                        break;
+                }
+
+                Level.IsEnabled = false;
+
+                Loading_Board_Start();
 
                 //Timer start
                 Start();
@@ -541,16 +177,284 @@ namespace Sudoku.GUI
             else
             {
                 StartGame.Content = "Start";
-                Curtain.Visibility = Visibility.Visible;
+                Text.Visibility = Visibility.Visible;
                 Information.Visibility = Visibility.Visible;
-                Information.Content = "Przerwa w grze";
+                YourTime.Visibility = Visibility.Visible;
+                Information.Content = "Pauza";
+                YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{sekends:D2}";
+                Collapsed_Buttons();
 
-                //Timer Stop
+                //Timer start
                 timer.Stop();
             }
         }
 
-        //Timer
+        /// <summary>
+        /// Increase_in_value_button
+        /// </summary>
+        private void Increase_In_Value(object sender, RoutedEventArgs e)
+        {
+            Button button_click = sender as Button;
+
+            if (!(button_click.BorderBrush == Brushes.Blue))
+            {
+                int number = Int32.Parse(CheckString(button_click.Content.ToString()));
+                button_click.Content = Plus(number).ToString();
+
+                // Check Value
+                Check_Value_Buttons_Of_Click(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]), button_click);
+            }
+
+        }
+
+        /// <summary>
+        /// Check Value Buttons of Click
+        /// </summary>
+        private void Paint_For_Click(int column, int row)
+        {
+            //Button_0_0 -> Button_[kolumna]_[wiersz]
+            // y -> kolumna
+            // x -> wiersz
+
+            for (int x = 0; x < (tableButtons.Length / 9); x++)
+            {
+                for (int y = 0; y < (tableButtons.Length / 9); y++)
+                {
+                    if (y == column || x == row)
+                    {
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                    }
+                }
+            }
+
+            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
+            {
+                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
+                {
+                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                }
+            }
+
+        }
+
+        private void Check_Value_Buttons_Of_Click(int column, int row, Button value)
+        {
+
+            //Button_0_0 -> Button_[kolumna]_[wiersz]
+            // y -> kolumna
+            // x -> wiersz
+
+            //Paint_for_click(Int32.Parse(Value.Name.Split('_')[1]), Int32.Parse(Value.Name.Split('_')[2]));
+        }
+
+        /// <summary>
+        /// Change BackGroud Buttons For Muve/Leave Mouse
+        /// </summary>
+        private void Change_Background_Color_MouseMove(object sender, MouseEventArgs e)
+        {
+            Button button_click = sender as Button;
+            Paint(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]));
+        }
+
+        private void Change_Background_Color_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button button_click = sender as Button;
+            PaintDefault(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]));
+        }
+
+        /// <summary>
+        /// Loading values
+        /// </summary>
+        private void Loading_Board_Start()
+        {
+            sudoku = game.CurrentGameBoard();
+
+            for (int x = 0; x < (tableButtons.Length / 9 ); x++)
+            {
+                for (int y = 0; y < (tableButtons.Length / 9); y++)
+                {
+                    if(sudoku[x, y] > 0)
+                    {
+                        tableButtons[y, x].Content = sudoku[x, y].ToString();
+                        tableButtons[y, x].BorderBrush = Brushes.Blue;
+                    }
+                }
+            }
+
+        }
+        
+        /// <summary>
+        /// Increase_in_value_button
+        /// </summary>
+        private int Plus(int value)
+        {
+            value++;
+            if (value > 9)
+            {
+                value = 1;
+            }
+            return value;
+        }
+
+        private string CheckString(string value)
+        {
+            if (value == "")
+            {
+                value = "0";
+                return value;
+            }
+            return value;
+        }
+        
+        /// <summary>
+        /// Paint squares
+        /// </summary>
+        private void Paint(int column, int row)
+        {
+            //Button_0_0 -> Button_[kolumna]_[wiersz]
+            // y -> kolumna
+            // x -> wiersz
+
+            for (int x = 0; x < (tableButtons.Length / 9); x++)
+            {
+                for (int y = 0; y < (tableButtons.Length / 9); y++)
+                {
+                    if (y == column || x == row)
+                    {
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                    }
+                }
+            }
+
+            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
+            {
+                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
+                {
+                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Paint squares for default color
+        /// </summary>
+        private void PaintDefault(int column, int row)
+        {
+            //Button_0_0 -> Button_[kolumna]_[wiersz]
+            // y -> kolumna
+            // x -> wiersz
+
+            for (int x = 0; x < (tableButtons.Length / 9); x++)
+            {
+                for (int y = 0; y < (tableButtons.Length / 9); y++)
+                {
+                    if (y == column || x == row)
+                    {
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                    }
+                }
+            }
+
+            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
+            {
+                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
+                {
+                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Chose positionY big squares
+        /// </summary>
+        private int PositionY(int column)
+        {
+            int y = 0;
+
+            if (column > -1 && column < 3)
+            {
+                y = 0;
+            }
+
+            if (column > 2 && column < 6)
+            {
+                y = 3;
+            }
+
+            if (column > 5 && column < 9)
+            {
+                y = 6;
+            }
+
+            return y;
+        }
+
+        /// <summary>
+        /// Chose positionX big squares
+        /// </summary>
+        private int PositionX(int row)
+        {
+            int x = 0;
+
+            if (row > -1 && row < 3)
+            {
+                x = 0;
+            }
+
+            if (row > 2 && row < 6)
+            {
+                x = 3;
+            }
+
+            if (row > 5 && row < 9)
+            {
+                x = 6;
+            }
+
+            return x;
+        }
+
+        /// <summary>
+        /// Show buttons for Window
+        /// </summary>
+        private void Show_Buttons()
+        {
+            //Button_0_0 -> Button_[kolumna]_[wiersz]
+            // y -> kolumna
+            // x -> wiersz
+
+            for (int x = 0; x < (tableButtons.Length / 9); x++)
+            {
+                for (int y = 0; y < (tableButtons.Length / 9); y++)
+                {
+                    tableButtons[y, x].Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Collapsed buttons for Window
+        /// </summary>
+        private void Collapsed_Buttons()
+        {
+            //Button_0_0 -> Button_[kolumna]_[wiersz]
+            // y -> kolumna
+            // x -> wiersz
+
+            for (int x = 0; x < (tableButtons.Length / 9); x++)
+            {
+                for (int y = 0; y < (tableButtons.Length / 9); y++)
+                {
+                    tableButtons[y, x].Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Start Timer
+        /// </summary>
         private void Start()
         {
             timer = new DispatcherTimer();
@@ -558,6 +462,7 @@ namespace Sudoku.GUI
             timer.Tick += TimeSekends;
             timer.Start();
         }
+
         private void TimeSekends(object sender, EventArgs e)
         {
             if (sekends < 59)
