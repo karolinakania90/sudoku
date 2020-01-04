@@ -51,6 +51,7 @@ namespace Sudoku.GUI
             tableBorders[6, 6] = Border_6_6;
 
             //---------------------
+
             tableButtons = new Button[9, 9];
             tableButtons[0, 0] = Button_0_0;
             tableButtons[0, 1] = Button_0_1;
@@ -182,6 +183,7 @@ namespace Sudoku.GUI
                 YourTime.Visibility = Visibility.Visible;
                 Information.Content = "Pauza";
                 YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{sekends:D2}";
+
                 Collapsed_Buttons();
 
                 //Timer start
@@ -190,7 +192,7 @@ namespace Sudoku.GUI
         }
 
         /// <summary>
-        /// Increase_in_value_button
+        /// Increase in value button
         /// </summary>
         private void Increase_In_Value(object sender, RoutedEventArgs e)
         {
@@ -202,15 +204,12 @@ namespace Sudoku.GUI
                 button_click.Content = Plus(number).ToString();
 
                 // Check Value
-                Check_Value_Buttons_Of_Click(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]), button_click);
+                //Check_Value_Buttons_Of_Click(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]), button_click);
             }
 
         }
 
-        /// <summary>
-        /// Check Value Buttons of Click
-        /// </summary>
-        private void Paint_For_Click(int column, int row)
+        /*private void Paint_For_Click(int column, int row)
         {
             //Button_0_0 -> Button_[kolumna]_[wiersz]
             // y -> kolumna
@@ -235,9 +234,12 @@ namespace Sudoku.GUI
                 }
             }
 
-        }
+        }*/
 
-        private void Check_Value_Buttons_Of_Click(int column, int row, Button value)
+        /// <summary>
+        /// Check Value Buttons of Click
+        /// </summary>
+        /*private void Check_Value_Buttons_Of_Click(int column, int row, Button value)
         {
 
             //Button_0_0 -> Button_[kolumna]_[wiersz]
@@ -245,10 +247,10 @@ namespace Sudoku.GUI
             // x -> wiersz
 
             //Paint_for_click(Int32.Parse(Value.Name.Split('_')[1]), Int32.Parse(Value.Name.Split('_')[2]));
-        }
+        }*/
 
         /// <summary>
-        /// Change BackGroud Buttons For Muve/Leave Mouse
+        /// Change BackGroud Buttons For Muve Mouse
         /// </summary>
         private void Change_Background_Color_MouseMove(object sender, MouseEventArgs e)
         {
@@ -256,6 +258,9 @@ namespace Sudoku.GUI
             Paint(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]));
         }
 
+        /// <summary>
+        /// Change BackGroud Buttons For Leave Mouse
+        /// </summary>
         private void Change_Background_Color_MouseLeave(object sender, MouseEventArgs e)
         {
             Button button_click = sender as Button;
@@ -284,7 +289,7 @@ namespace Sudoku.GUI
         }
         
         /// <summary>
-        /// Increase_in_value_button
+        /// Increase in value button
         /// </summary>
         private int Plus(int value)
         {
@@ -296,6 +301,9 @@ namespace Sudoku.GUI
             return value;
         }
 
+        /// <summary>
+        /// Check button has a value
+        /// </summary>
         private string CheckString(string value)
         {
             if (value == "")
@@ -463,6 +471,9 @@ namespace Sudoku.GUI
             timer.Start();
         }
 
+        /// <summary>
+        /// Change value timer
+        /// </summary>
         private void TimeSekends(object sender, EventArgs e)
         {
             if (sekends < 59)

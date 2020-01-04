@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="Sudoku" Height="780" Width="760" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="112*"/>
-            <RowDefinition Height="13*"/>
-        </Grid.RowDefinitions>
         <Button x:Name="Button_0_0" Content="" HorizontalAlignment="Left" Margin="71,75,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_In_Value" MouseMove="Change_Background_Color_MouseMove" MouseLeave="Change_Background_Color_MouseLeave"/>
         <Button x:Name="Button_1_0" Content="" HorizontalAlignment="Left" Margin="134,75,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_In_Value" Mouse.MouseMove="Change_Background_Color_MouseMove" MouseLeave="Change_Background_Color_MouseLeave"/>
         <Button x:Name="Button_0_1" Content="" HorizontalAlignment="Left" Margin="71,129,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_In_Value" MouseMove="Change_Background_Color_MouseMove" MouseLeave="Change_Background_Color_MouseLeave"/>
@@ -100,21 +96,21 @@
         <Label x:Name="Information" Content="" HorizontalAlignment="Left" Margin="330,222,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="Text" Content="Twój czas : " HorizontalAlignment="Left" Margin="270,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="YourTime" Content="" HorizontalAlignment="Left" Margin="415,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
-        <Button x:Name="StartGame" Content="Start" Margin="408,28,245.6,0" VerticalAlignment="Top" FontSize="18" Click="StartGame_Click" Grid.Row="1"/>
+        <Button x:Name="StartGame" Content="Start" Margin="408,688,245.6,0" VerticalAlignment="Top" FontSize="18" Click="StartGame_Click"/>
         <Border x:Name="Border_0_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_3_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_6_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_0_3" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,266,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_3_3" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,266,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_6_3" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,266,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
-        <Border x:Name="Border_0_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden" Grid.RowSpan="2"/>
-        <Border x:Name="Border_3_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden" Grid.RowSpan="2"/>
-        <Border x:Name="Border_6_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden" Grid.RowSpan="2"/>
-        <ComboBox x:Name="Level" HorizontalAlignment="Left" Height="26" Margin="270,28,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100">
+        <Border x:Name="Border_0_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_3_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <Border x:Name="Border_6_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
+        <ComboBox x:Name="Level" HorizontalAlignment="Left" Height="26" Margin="254,688,0,0" VerticalAlignment="Top" Width="100">
             <ComboBoxItem  IsSelected="True">Easy</ComboBoxItem>
             <ComboBoxItem>Medium</ComboBoxItem>
             <ComboBoxItem>Hard</ComboBoxItem>
         </ComboBox>
-        <Label x:Name="TextLevel" Content="Poziom gry : " HorizontalAlignment="Left" Margin="158,26,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31"/>
+        <Label x:Name="TextLevel" Content="Poziom gry : " HorizontalAlignment="Left" Margin="158,686,0,0" VerticalAlignment="Top" Height="31"/>
     </Grid>
 </Window>
