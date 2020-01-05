@@ -81,5 +81,10 @@ namespace Sudoku.Engine
 
             return gameBoard;
         }
+
+        public SelectedItemState ValidateCurrentItem(int x, int y)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

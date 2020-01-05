@@ -1,18 +1,9 @@
 ﻿using Sudoku.Engine;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Sudoku.GUI
@@ -136,7 +127,7 @@ namespace Sudoku.GUI
             tableButtons[8, 8] = Button_8_8;
 
             //-----------------------
-            
+
             Collapsed_Buttons();
         }
 
@@ -204,9 +195,35 @@ namespace Sudoku.GUI
                 button_click.Content = Plus(number).ToString();
 
                 // Check Value
-                //Check_Value_Buttons_Of_Click(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]), button_click);
+                var buttonLocation = GetCurrentButtonLocation(button_click);
+
+                var itemStatus = game.ValidateCurrentItem(buttonLocation[0], buttonLocation[1]);
+
+                ValidateCurrentItem(itemStatus, buttonLocation);
             }
 
+        }
+
+        private void ValidateCurrentItem(SelectedItemState itemStatus, int[] buttonLocation)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Returns location x,y of current button. 
+        /// For Example button_1_0 will return: array {0, 1}
+        /// </summary>
+        /// <param name="currentButton"></param>
+        /// <returns></returns>
+        private static int[] GetCurrentButtonLocation(Button currentButton)
+        {
+            var currentButtonLocation = currentButton.Name.Split('_');
+
+            var result = new int[2];
+            result[0] = Int32.Parse(currentButtonLocation[1]);
+            result[1] = Int32.Parse(currentButtonLocation[0]);
+
+            return result;
         }
 
         /*private void Paint_For_Click(int column, int row)
@@ -274,11 +291,11 @@ namespace Sudoku.GUI
         {
             sudoku = game.CurrentGameBoard();
 
-            for (int x = 0; x < (tableButtons.Length / 9 ); x++)
+            for (int x = 0; x < (tableButtons.Length / 9); x++)
             {
                 for (int y = 0; y < (tableButtons.Length / 9); y++)
                 {
-                    if(sudoku[x, y] > 0)
+                    if (sudoku[x, y] > 0)
                     {
                         tableButtons[y, x].Content = sudoku[x, y].ToString();
                         tableButtons[y, x].BorderBrush = Brushes.Blue;
@@ -287,7 +304,7 @@ namespace Sudoku.GUI
             }
 
         }
-        
+
         /// <summary>
         /// Increase in value button
         /// </summary>
@@ -313,7 +330,7 @@ namespace Sudoku.GUI
             }
             return value;
         }
-        
+
         /// <summary>
         /// Paint squares
         /// </summary>
