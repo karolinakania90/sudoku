@@ -16,6 +16,11 @@ namespace Sudoku.Engine
             board = Factory.Puzzle(0, 4, 30, 40);
         }
 
+
+        /// <summary>
+        /// Create game based on selected Game Level
+        /// </summary>
+        /// <param name="gameLevel"></param>
         public Game(GameLevel gameLevel)
         {
             switch (gameLevel)
