@@ -7,7 +7,7 @@ namespace Sudoku.Engine.Tests
     public class GameTests
     {
         [TestMethod]
-        public void GameBoardSameAsLibraryBoard()
+        public void GameBoardSameAsLibraryBoardEasy()
         {
             var game = new Game(GameLevel.Easy);
 
