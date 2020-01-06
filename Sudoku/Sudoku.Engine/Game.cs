@@ -1,9 +1,6 @@
 ﻿using SudokuSharp;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sudoku.Engine
 {
@@ -37,16 +34,43 @@ namespace Sudoku.Engine
             }
         }
 
-        public bool EndGame()
+        /// <summary>
+        /// Gets value of populated field
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public int GetFieldValue(int x, int y)
+        {
+            var itemValue = board.GetCell(new Location(x, y));
+            return itemValue;
+        }
+
+        /// <summary>
+        /// Determinates if Sudoku game is solved
+        /// </summary>
+        /// <returns></returns>
+        public bool IsSudokuSolved()
         {
             return board.ExistsUniqueSolution();
         }
 
+        /// <summary>
+        /// Set another item value on Sudoku board
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="value"></param>
         public void SetField(string x, string y, int value)
         {
             board.PutCell(new Location(Int32.Parse(x), Int32.Parse(y)), value);
         }
 
+
+        /// <summary>
+        /// Returns information if Sudoku game is valid
+        /// </summary>
+        /// <returns></returns>
         public bool ValidateGame()
         {
             return board.IsValid;
@@ -87,11 +111,23 @@ namespace Sudoku.Engine
             return gameBoard;
         }
 
+        /// <summary>
+        /// Returns current game board with currently filled values (string)
+        /// </summary>
+        /// <returns></returns>
         public string CurrentGameBoardString()
         {
             return this.board.ToString();
         }
 
+
+        /// <summary>
+        /// Check if changed value for item does not break Sudoku.
+        /// Validates all in row, column and square.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public SelectedItemState ValidateCurrentItem(int x, int y)
         {
             throw new NotImplementedException();
