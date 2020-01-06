@@ -20,7 +20,6 @@ namespace Sudoku.Engine.Tests
         }
 
         [TestMethod]
-        /// to implement
         public void SetItemValueOnBoard_Valid()
         {
             var game = new Game(GameLevel.Easy);
