@@ -1,5 +1,9 @@
 ﻿using Sudoku.Engine;
 using System;
+using System.Globalization;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,6 +26,7 @@ namespace Sudoku.GUI
         private DispatcherTimer timer;
         private Game game;
         private string level;
+        private bool creat_board = true;
 
         public MainWindow()
         {
@@ -138,30 +143,29 @@ namespace Sudoku.GUI
         {
             if ((string)StartGame.Content == "Start")
             {
-                StartGame.Content = "Pauza";
-                Show_Buttons();
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr-FR");
+                string msg2 = "start";
+                StartGame.Content = msg2;
                 Text.Visibility = Visibility.Collapsed;
                 Information.Visibility = Visibility.Collapsed;
                 YourTime.Visibility = Visibility.Collapsed;
 
                 level = Level.Text;
 
-                switch (level)
+                if(creat_board == true)
                 {
-                    case "Easy":
-                        game = new Game(GameLevel.Easy);
-                        break;
-                    case "Medium":
-                        game = new Game(GameLevel.Medium);
-                        break;
-                    case "Hard":
-                        game = new Game(GameLevel.Hard);
-                        break;
+                    creat_board = false;
+                    Task.Factory.StartNew(() =>
+                    {
+                        Loading_Board_Start();
+                    });
                 }
+                
 
                 Level.IsEnabled = false;
 
-                Loading_Board_Start();
+                // Buttons Hidden
+                Show_Buttons();
 
                 //Timer start
                 Start();
@@ -289,20 +293,35 @@ namespace Sudoku.GUI
         /// </summary>
         private void Loading_Board_Start()
         {
-            sudoku = game.CurrentGameBoard();
-
-            for (int x = 0; x < (tableButtons.Length / 9); x++)
+            Dispatcher.Invoke(() =>
             {
-                for (int y = 0; y < (tableButtons.Length / 9); y++)
+                switch (level)
                 {
-                    if (sudoku[x, y] > 0)
+                    case "Easy":
+                        game = new Game(GameLevel.Easy);
+                        break;
+                    case "Medium":
+                        game = new Game(GameLevel.Medium);
+                        break;
+                    case "Hard":
+                        game = new Game(GameLevel.Hard);
+                        break;
+                }
+
+                sudoku = game.CurrentGameBoard();
+
+                for (int x = 0; x < (tableButtons.Length / 9); x++)
+                {
+                    for (int y = 0; y < (tableButtons.Length / 9); y++)
                     {
-                        tableButtons[y, x].Content = sudoku[x, y].ToString();
-                        tableButtons[y, x].BorderBrush = Brushes.Blue;
+                        if (sudoku[x, y] > 0)
+                        {
+                            tableButtons[y, x].Content = sudoku[x, y].ToString();
+                            tableButtons[y, x].BorderBrush = Brushes.Blue;
+                        }
                     }
                 }
-            }
-
+            });
         }
 
         /// <summary>
