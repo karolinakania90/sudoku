@@ -1,8 +1,5 @@
 ﻿using Sudoku.Engine;
 using System;
-using System.Globalization;
-using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,9 +21,11 @@ namespace Sudoku.GUI
         private int minutes = 0;
         private int sekends = 0;
         private DispatcherTimer timer;
+        private DispatcherTimer language;
         private Game game;
         private string level;
         private bool creat_board = true;
+        private string pause;
 
         public MainWindow()
         {
@@ -134,6 +133,10 @@ namespace Sudoku.GUI
             //-----------------------
 
             Collapsed_Buttons();
+
+            //-----------------------
+
+            LanguagePack();
         }
 
         /// <summary>
@@ -143,9 +146,7 @@ namespace Sudoku.GUI
         {
             if ((string)StartGame.Content == "Start")
             {
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr-FR");
-                string msg2 = "start";
-                StartGame.Content = msg2;
+                StartGame.Content = pause;
                 Text.Visibility = Visibility.Collapsed;
                 Information.Visibility = Visibility.Collapsed;
                 YourTime.Visibility = Visibility.Collapsed;
@@ -163,6 +164,7 @@ namespace Sudoku.GUI
                 
 
                 Level.IsEnabled = false;
+                Language.IsEnabled = false;
 
                 // Buttons Hidden
                 Show_Buttons();
@@ -176,7 +178,7 @@ namespace Sudoku.GUI
                 Text.Visibility = Visibility.Visible;
                 Information.Visibility = Visibility.Visible;
                 YourTime.Visibility = Visibility.Visible;
-                Information.Content = "Pauza";
+                Information.Content = pause;
                 YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{sekends:D2}";
 
                 Collapsed_Buttons();
@@ -304,6 +306,15 @@ namespace Sudoku.GUI
                         game = new Game(GameLevel.Medium);
                         break;
                     case "Hard":
+                        game = new Game(GameLevel.Hard);
+                        break;
+                    case "Łatwy":
+                        game = new Game(GameLevel.Easy);
+                        break;
+                    case "Średni":
+                        game = new Game(GameLevel.Medium);
+                        break;
+                    case "Trudny":
                         game = new Game(GameLevel.Hard);
                         break;
                 }
@@ -535,6 +546,49 @@ namespace Sudoku.GUI
                     hours++;
                     Hours.Content = $"{hours:D2}";
                 }
+            }
+        }
+
+        /// <summary>
+        /// Check user pack
+        /// </summary>
+        private void LanguagePack()
+        {
+            language = new DispatcherTimer();
+            language.Interval = TimeSpan.FromMilliseconds(10);
+            language.Tick += ChooseLanguage;
+            language.Start();
+        }
+
+        /// <summary>
+        /// Change language
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChooseLanguage(object sender, EventArgs e)
+        {
+            switch (Language.Text)
+            {
+                case "Polski":
+                    Level_Easy.Content = "Łatwy";
+                    Level_Medium.Content = "Średni";
+                    Level_Hard.Content = "Trudny";
+                    pause = "Pauza";
+                    Text.Content = "Twój czas : ";
+                    TextLanguage.Content = "Język :";
+                    TextLevel.Content = "Poziom gry : ";
+                    TextLanguage.Margin = new Thickness(305, 683, 0, 0);
+                    break;
+                case "English":
+                    Level_Easy.Content = "Easy";
+                    Level_Medium.Content = "Medium";
+                    Level_Hard.Content = "Hard";
+                    pause = "Pause";
+                    Text.Content = "Your time : ";
+                    TextLevel.Content = "Game level : ";
+                    TextLanguage.Content = "Language :";
+                    TextLanguage.Margin = new Thickness(285, 683, 0,0);
+                    break;
             }
         }
     }

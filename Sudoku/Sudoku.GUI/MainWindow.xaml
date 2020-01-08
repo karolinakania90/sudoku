@@ -95,8 +95,8 @@
         <Label Content=":" HorizontalAlignment="Left" Margin="408,7,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="Information" Content="" HorizontalAlignment="Left" Margin="330,222,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="Text" Content="Twój czas : " HorizontalAlignment="Left" Margin="270,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
-        <Label x:Name="YourTime" Content="" HorizontalAlignment="Left" Margin="415,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
-        <Button x:Name="StartGame" Content="Start" Margin="408,688,245.6,0" VerticalAlignment="Top" FontSize="18" Click="StartGame_Click"/>
+        <Label x:Name="YourTime" Content="" HorizontalAlignment="Left" Margin="383,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
+        <Button x:Name="StartGame" Content="Start" Margin="528,683,125.6,0" VerticalAlignment="Top" FontSize="18" Click="StartGame_Click"/>
         <Border x:Name="Border_0_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_3_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_6_0" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,50,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
@@ -106,11 +106,16 @@
         <Border x:Name="Border_0_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="48,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_3_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="276,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
         <Border x:Name="Border_6_6" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" Margin="502,479,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden"/>
-        <ComboBox x:Name="Level" HorizontalAlignment="Left" Height="26" Margin="254,688,0,0" VerticalAlignment="Top" Width="100">
-            <ComboBoxItem  IsSelected="True">Easy</ComboBoxItem>
-            <ComboBoxItem>Medium</ComboBoxItem>
-            <ComboBoxItem>Hard</ComboBoxItem>
+        <ComboBox x:Name="Level" HorizontalAlignment="Left" Height="26" Margin="158,683,0,0" VerticalAlignment="Top" Width="100">
+            <ComboBoxItem x:Name="Level_Easy" IsSelected="True">Łatwy</ComboBoxItem>
+            <ComboBoxItem x:Name="Level_Medium">Średni</ComboBoxItem>
+            <ComboBoxItem x:Name="Level_Hard">Trudny</ComboBoxItem>
         </ComboBox>
-        <Label x:Name="TextLevel" Content="Poziom gry : " HorizontalAlignment="Left" Margin="158,686,0,0" VerticalAlignment="Top" Height="31"/>
+        <Label x:Name="TextLevel" Content="Poziom gry : " HorizontalAlignment="Left" Margin="71,683,0,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="-0.014,0.51"/>
+        <Label x:Name="TextLanguage" Content="Język :" HorizontalAlignment="Left" Margin="305,683,0,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="-0.014,0.51"/>
+        <ComboBox x:Name="Language" HorizontalAlignment="Left" Height="26" Margin="354,683,0,0" VerticalAlignment="Top" Width="100">
+            <ComboBoxItem IsSelected="True">Polski</ComboBoxItem>
+            <ComboBoxItem>English</ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>
