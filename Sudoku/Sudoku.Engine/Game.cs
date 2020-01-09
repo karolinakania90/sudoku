@@ -130,7 +130,12 @@ namespace Sudoku.Engine
         /// <returns></returns>
         public SelectedItemState ValidateCurrentItem(int x, int y)
         {
-            throw new NotImplementedException();
+            // to be changed
+            var state =  new SelectedItemState();
+            state.IsRowOk = true;
+            state.IsColumnOk = false;
+            
+            return state;
         }
     }
 }
