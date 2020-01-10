@@ -197,7 +197,7 @@ namespace Sudoku.GUI
 
             if (!(button_click.BorderBrush == Brushes.Blue))
             {
-                int number = Int32.Parse(CheckString(button_click.Content.ToString()));
+                int number = Int32.Parse(CheckString.CheckStringValue(button_click.Content.ToString()));
                 button_click.Content = Plus(number).ToString();
 
                 // Check Value
@@ -344,19 +344,6 @@ namespace Sudoku.GUI
             if (value > 9)
             {
                 value = 1;
-            }
-            return value;
-        }
-
-        /// <summary>
-        /// Check button has a value
-        /// </summary>
-        private string CheckString(string value)
-        {
-            if (value == "")
-            {
-                value = "0";
-                return value;
             }
             return value;
         }
