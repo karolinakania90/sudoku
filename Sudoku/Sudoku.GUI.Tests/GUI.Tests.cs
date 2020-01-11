@@ -44,7 +44,7 @@ namespace Sudoku.GUI.Tests
         [TestMethod]
         public void ButtonY()
         {
-            int value = ButtonPositionX.PositionX(1);
+            int value = ButtonPositionY.PositionY(1);
             Assert.IsTrue(value == 0);
         }
     }
