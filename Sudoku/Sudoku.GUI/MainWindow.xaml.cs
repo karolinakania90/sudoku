@@ -198,7 +198,7 @@ namespace Sudoku.GUI
             if (!(button_click.BorderBrush == Brushes.Blue))
             {
                 int number = Int32.Parse(CheckString.CheckStringValue(button_click.Content.ToString()));
-                button_click.Content = Plus(number).ToString();
+                button_click.Content = (PlusValue.Plus(number)).ToString();
 
                 // Check Value
                 var buttonLocation = GetCurrentButtonLocation(button_click);
@@ -336,19 +336,6 @@ namespace Sudoku.GUI
         }
 
         /// <summary>
-        /// Increase in value button
-        /// </summary>
-        private int Plus(int value)
-        {
-            value++;
-            if (value > 9)
-            {
-                value = 1;
-            }
-            return value;
-        }
-
-        /// <summary>
         /// Paint squares
         /// </summary>
         private void Paint(int column, int row)
@@ -368,9 +355,9 @@ namespace Sudoku.GUI
                 }
             }
 
-            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
+            for (int x = ButtonPositionX.PositionX(row); x < (ButtonPositionX.PositionX(row) + 3); x++)
             {
-                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
+                for (int y = ButtonPositionY.PositionY(column); y < (ButtonPositionY.PositionY(column) + 3); y++)
                 {
                     tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
                 }
@@ -398,64 +385,14 @@ namespace Sudoku.GUI
                 }
             }
 
-            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
+            for (int x = ButtonPositionX.PositionX(row); x < (ButtonPositionX.PositionX(row) + 3); x++)
             {
-                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
+                for (int y = ButtonPositionY.PositionY(column); y < (ButtonPositionY.PositionY(column) + 3); y++)
                 {
                     tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
                 }
             }
 
-        }
-
-        /// <summary>
-        /// Chose positionY big squares
-        /// </summary>
-        private int PositionY(int column)
-        {
-            int y = 0;
-
-            if (column > -1 && column < 3)
-            {
-                y = 0;
-            }
-
-            if (column > 2 && column < 6)
-            {
-                y = 3;
-            }
-
-            if (column > 5 && column < 9)
-            {
-                y = 6;
-            }
-
-            return y;
-        }
-
-        /// <summary>
-        /// Chose positionX big squares
-        /// </summary>
-        private int PositionX(int row)
-        {
-            int x = 0;
-
-            if (row > -1 && row < 3)
-            {
-                x = 0;
-            }
-
-            if (row > 2 && row < 6)
-            {
-                x = 3;
-            }
-
-            if (row > 5 && row < 9)
-            {
-                x = 6;
-            }
-
-            return x;
         }
 
         /// <summary>

@@ -19,5 +19,33 @@ namespace Sudoku.GUI.Tests
             string value = CheckString.CheckStringValue("");
             Assert.IsTrue(value == "0");
         }
+
+        [TestMethod]
+        public void PlusValueButtons()
+        {
+            int value = PlusValue.Plus(2);
+            Assert.IsTrue(value == 3);
+        }
+
+        [TestMethod]
+        public void PlusValueButtonsCondition()
+        {
+            int value = PlusValue.Plus(9);
+            Assert.IsTrue(value == 1);
+        }
+        
+        [TestMethod]
+        public void ButtonX()
+        {
+            int value = ButtonPositionX.PositionX(5);
+            Assert.IsTrue(value == 3);
+        }
+
+        [TestMethod]
+        public void ButtonY()
+        {
+            int value = ButtonPositionX.PositionX(1);
+            Assert.IsTrue(value == 0);
+        }
     }
 }
