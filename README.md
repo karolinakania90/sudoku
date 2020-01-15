@@ -29,3 +29,7 @@ Front panel - in this place you choose the language and level of the game
 Game board
 
 ![](Sudoku/Sudoku.GUI/Images/Board.png)
+
+Timer of game
+
+![](Sudoku/Sudoku.GUI/Images/Timer.png)
