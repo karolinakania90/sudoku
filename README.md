@@ -22,5 +22,10 @@ Project consists of few projects:
 
 ## Sudoku.GUI - description
 
-game image should be here
+Front panel - in this place you choose the language and level of the game
+
+![](Sudoku/Sudoku.GUI/Images/FrontPage.png)
  
+Game board
+
+![](Sudoku/Sudoku.GUI/Images/Board.png)
