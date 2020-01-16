@@ -1,10 +1,11 @@
 # Sudoku.GUI - description
 
-Front panel - in this place you choose the language and level of the game
+Start screen
 
 ![](../Images/FrontPage.png)
 
 ### Sudoku.GUI - you can change the language and level of the game
+
 Selection panel in Polish
 
 ![](../Images/LanguagePolish.png)
