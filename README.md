@@ -22,14 +22,5 @@ Project consists of few projects:
 
 ## Sudoku.GUI - description
 
-Front panel - in this place you choose the language and level of the game
+[Description for Sudoku.GUI](Sudoku/Sudoku.GUI/articles/description.md)
 
-![](Sudoku/Sudoku.GUI/Images/FrontPage.png)
- 
-Game board
-
-![](Sudoku/Sudoku.GUI/Images/Board.png)
-
-Timer of game
-
-![](Sudoku/Sudoku.GUI/Images/Timer.png)
