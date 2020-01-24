@@ -26,6 +26,8 @@ namespace Sudoku.GUI
         private string level;
         private bool creat_board = true;
         private string pause;
+        private string endingText;
+        private int marginLeft;
 
         public MainWindow()
         {
@@ -216,6 +218,11 @@ namespace Sudoku.GUI
 
         }
 
+        /// <summary>
+        /// Conviction of identical values ​​- error
+        /// </summary>
+        /// <param name="itemStatus"></param>
+        /// <param name="buttonLocation"></param>
         private void ValidateGameBoard(SelectedItemState itemStatus, int[] buttonLocation)
         {
 
@@ -227,6 +234,9 @@ namespace Sudoku.GUI
             }
         }
 
+        /// <summary>
+        /// Paint squares for default color - leaving only the wrong  
+        /// </summary>
         private void ClearValidation()
         {
             for(int i=0; i<9; i++)
@@ -237,6 +247,37 @@ namespace Sudoku.GUI
                 }
             }
 
+        }
+
+        /// <summary>
+        /// When the player wins
+        /// board is cleared
+        /// the congratulation panel appears
+        /// </summary>
+        private void Finish_Game()
+        {
+            Text.Visibility = Visibility.Visible;
+            Information.Visibility = Visibility.Visible;
+            YourTime.Visibility = Visibility.Visible;
+            Level.Visibility = Visibility.Collapsed;
+            Language.Visibility = Visibility.Collapsed;
+            StartGame.Visibility = Visibility.Collapsed;
+            TextLevel.Visibility = Visibility.Collapsed;
+            TextLanguage.Visibility = Visibility.Collapsed;
+            Hours.Visibility = Visibility.Collapsed;
+            Minutes.Visibility = Visibility.Collapsed;
+            Seconds.Visibility = Visibility.Collapsed;
+            H_M.Visibility = Visibility.Collapsed;
+            M_S.Visibility = Visibility.Collapsed;
+
+            Information.Margin = new Thickness(marginLeft, 222, 0, 0);
+            Information.Content = endingText;
+            YourTime.Content = $"{hours:D2}" + " : " + $"{minutes:D2}" + " : " + $"{sekends:D2}";
+
+            Collapsed_Buttons();
+
+            //Timer start
+            timer.Stop();
         }
 
         /// <summary>
@@ -255,7 +296,6 @@ namespace Sudoku.GUI
 
             return result;
         }
-
 
         /// <summary>
         /// Change BackGroud Buttons For Mouve Mouse
@@ -491,7 +531,9 @@ namespace Sudoku.GUI
                     Text.Content = "Twój czas : ";
                     TextLanguage.Content = "Język :";
                     TextLevel.Content = "Poziom gry : ";
+                    endingText = "Gratulacje !!! Rozwiązałeś Sudoku :-)";
                     TextLanguage.Margin = new Thickness(305, 683, 0, 0);
+                    marginLeft = 230;
                     break;
                 case "English":
                     Level_Easy.Content = "Easy";
@@ -501,7 +543,9 @@ namespace Sudoku.GUI
                     Text.Content = "Your time : ";
                     TextLevel.Content = "Game level : ";
                     TextLanguage.Content = "Language :";
+                    endingText = "Congratulations !!! You solved Sudoku :-)";
                     TextLanguage.Margin = new Thickness(285, 683, 0, 0);
+                    marginLeft = 212;
                     break;
             }
         }

@@ -91,8 +91,8 @@
         <Label x:Name="Hours" Content="00" HorizontalAlignment="Left" Margin="307,7,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="Minutes" Content="00" HorizontalAlignment="Left" Margin="369,7,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="Seconds" Content="00" HorizontalAlignment="Left" Margin="430,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.229,0.703" FontSize="18"/>
-        <Label Content=":" HorizontalAlignment="Left" Margin="344,7,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content=":" HorizontalAlignment="Left" Margin="408,7,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="H_M" Content=":" HorizontalAlignment="Left" Margin="344,7,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="M_S" Content=":" HorizontalAlignment="Left" Margin="408,7,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="Information" Content="Pauza" HorizontalAlignment="Left" Margin="357,222,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="Text" Content="Twój czas : " HorizontalAlignment="Left" Margin="282,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
         <Label x:Name="YourTime" Content="" HorizontalAlignment="Left" Margin="383,325,0,0" VerticalAlignment="Top" Panel.ZIndex="11" FontSize="18" Visibility="Hidden"/>
