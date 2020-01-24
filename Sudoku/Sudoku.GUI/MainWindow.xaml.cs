@@ -153,7 +153,7 @@ namespace Sudoku.GUI
 
                 level = Level.Text;
 
-                if(creat_board == true)
+                if (creat_board == true)
                 {
                     creat_board = false;
                     Task.Factory.StartNew(() =>
@@ -161,7 +161,7 @@ namespace Sudoku.GUI
                         Loading_Board_Start();
                     });
                 }
-                
+
 
                 Level.IsEnabled = false;
                 Language.IsEnabled = false;
@@ -198,21 +198,45 @@ namespace Sudoku.GUI
             if (!(button_click.BorderBrush == Brushes.Blue))
             {
                 int number = Int32.Parse(CheckString.CheckStringValue(button_click.Content.ToString()));
-                button_click.Content = (PlusValue.Plus(number)).ToString();
+                number = PlusValue.Plus(number);
+                button_click.Content = number.ToString();
 
                 // Check Value
                 var buttonLocation = GetCurrentButtonLocation(button_click);
 
+
+                // set game value
+                game.SetField(buttonLocation[1], buttonLocation[0], number);
+
                 var itemStatus = game.ValidateCurrentItem(buttonLocation[0], buttonLocation[1]);
 
-                ValidateCurrentItem(itemStatus, buttonLocation);
+
+                ValidateGameBoard(itemStatus, buttonLocation);
             }
 
         }
 
-        private void ValidateCurrentItem(SelectedItemState itemStatus, int[] buttonLocation)
+        private void ValidateGameBoard(SelectedItemState itemStatus, int[] buttonLocation)
         {
-            throw new NotImplementedException();
+
+            ClearValidation();
+
+            foreach(var duplicate in itemStatus.Duplicates)
+            {
+                tableButtons[duplicate[1], duplicate[0]].Background = Brushes.Red;
+            }
+        }
+
+        private void ClearValidation()
+        {
+            for(int i=0; i<9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    tableButtons[i, j].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                }
+            }
+
         }
 
         /// <summary>
@@ -226,59 +250,21 @@ namespace Sudoku.GUI
             var currentButtonLocation = currentButton.Name.Split('_');
 
             var result = new int[2];
-            result[0] = Int32.Parse(currentButtonLocation[1]);
-            result[1] = Int32.Parse(currentButtonLocation[0]);
+            result[0] = Int32.Parse(currentButtonLocation[2]);
+            result[1] = Int32.Parse(currentButtonLocation[1]);
 
             return result;
         }
 
-        /*private void Paint_For_Click(int column, int row)
-        {
-            //Button_0_0 -> Button_[kolumna]_[wiersz]
-            // y -> kolumna
-            // x -> wiersz
-
-            for (int x = 0; x < (tableButtons.Length / 9); x++)
-            {
-                for (int y = 0; y < (tableButtons.Length / 9); y++)
-                {
-                    if (y == column || x == row)
-                    {
-                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
-                    }
-                }
-            }
-
-            for (int x = PositionX(row); x < (PositionX(row) + 3); x++)
-            {
-                for (int y = PositionY(column); y < (PositionY(column) + 3); y++)
-                {
-                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
-                }
-            }
-
-        }*/
 
         /// <summary>
-        /// Check Value Buttons of Click
-        /// </summary>
-        /*private void Check_Value_Buttons_Of_Click(int column, int row, Button value)
-        {
-
-            //Button_0_0 -> Button_[kolumna]_[wiersz]
-            // y -> kolumna
-            // x -> wiersz
-
-            //Paint_for_click(Int32.Parse(Value.Name.Split('_')[1]), Int32.Parse(Value.Name.Split('_')[2]));
-        }*/
-
-        /// <summary>
-        /// Change BackGroud Buttons For Muve Mouse
+        /// Change BackGroud Buttons For Mouve Mouse
         /// </summary>
         private void Change_Background_Color_MouseMove(object sender, MouseEventArgs e)
         {
             Button button_click = sender as Button;
-            Paint(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]));
+            if (button_click.Background != Brushes.Red)
+                Paint(Int32.Parse(button_click.Name.Split('_')[1]), Int32.Parse(button_click.Name.Split('_')[2]));
         }
 
         /// <summary>
@@ -350,7 +336,8 @@ namespace Sudoku.GUI
                 {
                     if (y == column || x == row)
                     {
-                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                        if (tableButtons[y, x].Background != Brushes.Red)
+                            tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
                     }
                 }
             }
@@ -359,7 +346,8 @@ namespace Sudoku.GUI
             {
                 for (int y = ButtonPositionY.PositionY(column); y < (ButtonPositionY.PositionY(column) + 3); y++)
                 {
-                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
+                    if (tableButtons[y, x].Background != Brushes.Red)
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(255, 253, 178));
                 }
             }
 
@@ -380,7 +368,8 @@ namespace Sudoku.GUI
                 {
                     if (y == column || x == row)
                     {
-                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                        if (tableButtons[y, x].Background != Brushes.Red)
+                            tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
                     }
                 }
             }
@@ -389,7 +378,8 @@ namespace Sudoku.GUI
             {
                 for (int y = ButtonPositionY.PositionY(column); y < (ButtonPositionY.PositionY(column) + 3); y++)
                 {
-                    tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+                    if (tableButtons[y, x].Background != Brushes.Red)
+                        tableButtons[y, x].Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
                 }
             }
 
@@ -438,14 +428,14 @@ namespace Sudoku.GUI
         {
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += TimeSekends;
+            timer.Tick += TimeSeconds;
             timer.Start();
         }
 
         /// <summary>
         /// Change value timer
         /// </summary>
-        private void TimeSekends(object sender, EventArgs e)
+        private void TimeSeconds(object sender, EventArgs e)
         {
             if (sekends < 59)
             {
@@ -511,7 +501,7 @@ namespace Sudoku.GUI
                     Text.Content = "Your time : ";
                     TextLevel.Content = "Game level : ";
                     TextLanguage.Content = "Language :";
-                    TextLanguage.Margin = new Thickness(285, 683, 0,0);
+                    TextLanguage.Margin = new Thickness(285, 683, 0, 0);
                     break;
             }
         }

@@ -1,5 +1,6 @@
 ﻿using SudokuSharp;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sudoku.Engine
@@ -61,9 +62,9 @@ namespace Sudoku.Engine
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="value"></param>
-        public void SetField(string x, string y, int value)
+        public void SetField(int y, int x, int value)
         {
-            board.PutCell(new Location(Int32.Parse(x), Int32.Parse(y)), value);
+            board.PutCell(new Location(y, x), value);
         }
 
 
@@ -125,17 +126,65 @@ namespace Sudoku.Engine
         /// Check if changed value for item does not break Sudoku.
         /// Validates all in row, column and square.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
         /// <returns></returns>
         public SelectedItemState ValidateCurrentItem(int x, int y)
         {
-            // to be changed
-            var state =  new SelectedItemState();
-            state.IsRowOk = true;
-            state.IsColumnOk = false;
-            
+            var state = new SelectedItemState();
+
+            CheckRow(x, state);
+            CheckColumn(y, state);
             return state;
         }
+
+        private void CheckColumn(int y, SelectedItemState state)
+        {
+            var filledRow = board.Find.FilledLocations().Where(c => c.Column == y);
+
+            var columns = new Dictionary<Location, int>();
+
+            foreach (var column in filledRow)
+            {
+                columns[column] = board.GetCell(column.Index);
+            }
+
+            foreach (var column in columns)
+            {
+                var duplicates = columns.Where(c => c.Value == column.Value);
+                if (duplicates.Count() > 1)
+                {
+                    foreach (var duplicate in duplicates)
+                    {
+                        state.Duplicates.Add(new int[2] { duplicate.Key.Row, duplicate.Key.Column });
+                    }
+                }
+            }
+        }
+
+        public void CheckRow(int x, SelectedItemState state)
+        {
+            var filledRow = board.Find.FilledLocations().Where(c => c.Row == x);
+
+            var rowValues = new Dictionary<Location, int>();
+
+            foreach (var row in filledRow)
+            {
+                rowValues[row] = board.GetCell(row.Index);
+            }
+
+            foreach (var row in rowValues)
+            {
+                var duplicates = rowValues.Where(c => c.Value == row.Value);
+                if (duplicates.Count() > 1)
+                {
+                    foreach (var duplicate in duplicates)
+                    {
+                        state.Duplicates.Add(new int[2] { duplicate.Key.Row, duplicate.Key.Column });
+                    }
+                }
+            }
+        }
+
     }
 }

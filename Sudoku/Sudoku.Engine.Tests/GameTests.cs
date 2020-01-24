@@ -25,7 +25,7 @@ namespace Sudoku.Engine.Tests
             var game = new Game(GameLevel.Easy);
             int expectedValue = 10;
 
-            game.SetField("0", " 1", expectedValue);
+            game.SetField(0, 1, expectedValue);
 
             var value = game.GetFieldValue(0, 1);
 

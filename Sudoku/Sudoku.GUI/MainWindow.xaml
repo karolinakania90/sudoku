@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku.GUI"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Sudoku" Height="780" Width="760" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid>
         <Button x:Name="Button_0_0" Content="" HorizontalAlignment="Left" Margin="71,75,0,0" VerticalAlignment="Top" Width="40" Height="35" Click="Increase_In_Value" MouseMove="Change_Background_Color_MouseMove" MouseLeave="Change_Background_Color_MouseLeave"/>

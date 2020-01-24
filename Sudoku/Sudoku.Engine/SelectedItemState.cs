@@ -1,11 +1,14 @@
-﻿namespace Sudoku.Engine
+﻿using System.Collections.Generic;
+
+namespace Sudoku.Engine
 {
     public class SelectedItemState
     {
-        public bool IsRowOk { get; set; }
+        public List<int[]> Duplicates { get; set; }
 
-        public bool IsColumnOk { get; set; }
-
-        public bool IsSquareOk { get; set; }
+        public SelectedItemState()
+        {
+            Duplicates = new List<int[]>();
+        }
     }
 }
