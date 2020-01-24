@@ -46,4 +46,18 @@ Pause panel :
 the area checked after clicking will be highlighted
 
 ![](../Images/PauzaPage.png)
+#
+Marking an error : 
+  - squares of the same value as the square we click on are highlighted in red
 
+![](../Images/Error.png)
+#
+### End of the game - when the player displays the panel in two possibilities
+
+Final panel in Polish
+
+![](../Images/PLfinish.png)
+
+Final panel in English
+
+![](../Images/ENGfinish.png)
