@@ -103,6 +103,7 @@ namespace Sudoku.Engine
         {
             int[,] gameBoard = new int[9, 9];
 
+            // remove new lines and spaces
             var boardString = board.ToString().Replace(" ", "").ToArray().Where(c => c != '\n').ToList();
 
             int row = 0;
