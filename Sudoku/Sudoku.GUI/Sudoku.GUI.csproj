@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -57,7 +57,7 @@
     <ManifestKeyFile>Sudoku.GUI_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -124,6 +124,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_1\Sudoku.Engine.dll.deploy" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_1\Sudoku.GUI.application" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_1\Sudoku.GUI.exe.config.deploy" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_1\Sudoku.GUI.exe.deploy" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_1\Sudoku.GUI.exe.manifest" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_1\SudokuSharp.dll.deploy" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_2\Sudoku.Engine.dll.deploy" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_2\Sudoku.GUI.application" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_2\Sudoku.GUI.exe.config.deploy" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_2\Sudoku.GUI.exe.deploy" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_2\Sudoku.GUI.exe.manifest" />
+    <None Include="Installer\Application Files\Sudoku.GUI_1_0_0_2\SudokuSharp.dll.deploy" />
+    <None Include="Installer\Sudoku.GUI.application" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,6 +163,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Installer\setup.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

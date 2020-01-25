@@ -195,6 +195,7 @@ namespace Sudoku.GUI
         /// </summary>
         private void Increase_In_Value(object sender, RoutedEventArgs e)
         {
+ 
             Button button_click = sender as Button;
 
             if (!(button_click.BorderBrush == Brushes.Blue))
@@ -212,10 +213,22 @@ namespace Sudoku.GUI
 
                 var itemStatus = game.ValidateCurrentItem(buttonLocation[0], buttonLocation[1]);
 
-
                 ValidateGameBoard(itemStatus, buttonLocation);
+
+                CheckGameStatus();
             }
 
+        }
+
+        /// <summary>
+        /// Checks if sudoku game is finised after last change
+        /// </summary>
+        private void CheckGameStatus()
+        {
+            if (game.IsSudokuSolved())
+            {
+                FinishGame();
+            }
         }
 
         /// <summary>
@@ -254,7 +267,7 @@ namespace Sudoku.GUI
         /// board is cleared
         /// the congratulation panel appears
         /// </summary>
-        private void Finish_Game()
+        private void FinishGame()
         {
             Text.Visibility = Visibility.Visible;
             Information.Visibility = Visibility.Visible;

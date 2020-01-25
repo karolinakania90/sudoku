@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GameLevel.cs" />
+    <Compile Include="History.cs" />
+    <Compile Include="HistoryItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectedItemState.cs" />
     <Compile Include="ZoneState.cs" />
@@ -57,11 +59,9 @@
     <None Include="api\.gitignore" />
     <None Include="api\index.md" />
     <None Include="articles\intro.md" />
-    <None Include="articles\toc.md" />
     <None Include="docfx.json" />
     <None Include="index.md" />
     <None Include="packages.config" />
-    <None Include="toc.yml" />
     <None Include="_site\fonts\glyphicons-halflings-regular.eot" />
     <None Include="_site\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="_site\fonts\glyphicons-halflings-regular.woff" />

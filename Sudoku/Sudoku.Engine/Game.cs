@@ -1,17 +1,23 @@
 ﻿using SudokuSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Sudoku.Engine
 {
+    [Serializable]
     public class Game
     {
         private Board board;
+        private History BoardHistory;
 
         public Game()
         {
             board = Factory.Puzzle(0, 4, 30, 40);
+            BoardHistory = new History();
         }
 
 
@@ -30,9 +36,11 @@ namespace Sudoku.Engine
                     board = Factory.Puzzle(0, 4, 60, 80);
                     break;
                 case GameLevel.Hard:
-                    board = Factory.Puzzle(7, 4, 80, 80);
+                    board = Factory.Puzzle(2, 40, 30, 1);
                     break;
             }
+
+            BoardHistory = new History();
         }
 
         /// <summary>
@@ -48,12 +56,24 @@ namespace Sudoku.Engine
         }
 
         /// <summary>
+        /// Check if sudoku value is set != 0
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public bool ValueIsSet(int x, int y)
+        {
+            var itemValue = board.GetCell(new Location(x, y));
+            return itemValue != 0;
+        }
+
+        /// <summary>
         /// Determinates if Sudoku game is solved
         /// </summary>
         /// <returns></returns>
         public bool IsSudokuSolved()
         {
-            return board.ExistsUniqueSolution();
+            return board.IsSolved;
         }
 
         /// <summary>
@@ -65,6 +85,7 @@ namespace Sudoku.Engine
         public void SetField(int y, int x, int value)
         {
             board.PutCell(new Location(y, x), value);
+            BoardHistory.AddItem(y, x, value);
         }
 
 
@@ -123,6 +144,15 @@ namespace Sudoku.Engine
 
 
         /// <summary>
+        /// returns history of inputs;
+        /// </summary>
+        /// <returns></returns>
+        public List<HistoryItem> GetHistoryItems()
+        {
+            return BoardHistory.Items;
+        }
+
+        /// <summary>
         /// Check if changed value for item does not break Sudoku.
         /// Validates all in row, column and square.
         /// </summary>
@@ -138,6 +168,12 @@ namespace Sudoku.Engine
             return state;
         }
 
+
+        /// <summary>
+        /// Check for duplicates in column
+        /// </summary>
+        /// <param name="y"></param>
+        /// <param name="state"></param>
         private void CheckColumn(int y, SelectedItemState state)
         {
             var filledRow = board.Find.FilledLocations().Where(c => c.Column == y);
@@ -162,6 +198,11 @@ namespace Sudoku.Engine
             }
         }
 
+        /// <summary>
+        /// Check for duplicates in row
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="state"></param>
         public void CheckRow(int x, SelectedItemState state)
         {
             var filledRow = board.Find.FilledLocations().Where(c => c.Row == x);
@@ -185,6 +226,5 @@ namespace Sudoku.Engine
                 }
             }
         }
-
     }
 }
