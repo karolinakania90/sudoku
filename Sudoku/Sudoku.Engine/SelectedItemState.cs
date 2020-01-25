@@ -2,11 +2,17 @@
 
 namespace Sudoku.Engine
 {
-    public class SelectedItemState
+    /// <summary>
+    /// Information about Sudoku state. If it is valid or not
+    /// </summary>
+    public class SudokuState
     {
+        /// <summary>
+        /// List of sudoku duplicates
+        /// </summary>
         public List<int[]> Duplicates { get; set; }
 
-        public SelectedItemState()
+        public SudokuState()
         {
             Duplicates = new List<int[]>();
         }

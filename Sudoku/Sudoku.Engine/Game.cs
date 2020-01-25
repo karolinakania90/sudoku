@@ -1,14 +1,10 @@
 ﻿using SudokuSharp;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Sudoku.Engine
 {
-    [Serializable]
     public class Game
     {
         private Board board;
@@ -36,7 +32,7 @@ namespace Sudoku.Engine
                     board = Factory.Puzzle(0, 4, 60, 80);
                     break;
                 case GameLevel.Hard:
-                    board = Factory.Puzzle(2, 40, 30, 1);
+                    board = Factory.Puzzle(2, 34, 0, 0);
                     break;
             }
 
@@ -159,9 +155,9 @@ namespace Sudoku.Engine
         /// <param name="row"></param>
         /// <param name="column"></param>
         /// <returns></returns>
-        public SelectedItemState ValidateCurrentItem(int x, int y)
+        public SudokuState ValidateCurrentItem(int x, int y)
         {
-            var state = new SelectedItemState();
+            var state = new SudokuState();
 
             CheckRow(x, state);
             CheckColumn(y, state);
@@ -174,7 +170,7 @@ namespace Sudoku.Engine
         /// </summary>
         /// <param name="y"></param>
         /// <param name="state"></param>
-        private void CheckColumn(int y, SelectedItemState state)
+        private void CheckColumn(int y, SudokuState state)
         {
             var filledRow = board.Find.FilledLocations().Where(c => c.Column == y);
 
@@ -203,7 +199,7 @@ namespace Sudoku.Engine
         /// </summary>
         /// <param name="x"></param>
         /// <param name="state"></param>
-        public void CheckRow(int x, SelectedItemState state)
+        public void CheckRow(int x, SudokuState state)
         {
             var filledRow = board.Find.FilledLocations().Where(c => c.Row == x);
 

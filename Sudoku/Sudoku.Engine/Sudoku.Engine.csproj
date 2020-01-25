@@ -52,7 +52,6 @@
     <Compile Include="HistoryItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectedItemState.cs" />
-    <Compile Include="ZoneState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

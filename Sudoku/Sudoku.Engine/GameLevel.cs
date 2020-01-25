@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sudoku.Engine
+﻿namespace Sudoku.Engine
 {
+    /// <summary>
+    /// Contains information about Game Level
+    /// </summary>
     public enum GameLevel
     {
        Easy,

@@ -236,7 +236,7 @@ namespace Sudoku.GUI
         /// </summary>
         /// <param name="itemStatus"></param>
         /// <param name="buttonLocation"></param>
-        private void ValidateGameBoard(SelectedItemState itemStatus, int[] buttonLocation)
+        private void ValidateGameBoard(SudokuState itemStatus, int[] buttonLocation)
         {
 
             ClearValidation();
