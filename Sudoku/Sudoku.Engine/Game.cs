@@ -8,12 +8,16 @@ namespace Sudoku.Engine
     public class Game
     {
         private Board board;
-        private History BoardHistory;
+        private History boardHistory;
 
+        /// <summary>
+        /// Default game in easy mode
+        /// </summary>
         public Game()
         {
-            board = Factory.Puzzle(0, 4, 30, 40);
-            BoardHistory = new History();
+            // easy
+            board = Factory.Puzzle(0, 1, 4, 0);
+            boardHistory = new History();
         }
 
 
@@ -38,7 +42,7 @@ namespace Sudoku.Engine
                     break;
             }
 
-            BoardHistory = new History();
+            boardHistory = new History();
         }
 
         /// <summary>
@@ -61,7 +65,7 @@ namespace Sudoku.Engine
         /// <returns></returns>
         public bool ValueIsSet(int x, int y)
         {
-            var itemValue = board.GetCell(new Location(x, y));
+            var itemValue = GetFieldValue(x, y);
             return itemValue != 0;
         }
 
@@ -75,7 +79,7 @@ namespace Sudoku.Engine
         }
 
         /// <summary>
-        /// Set another item value on Sudoku board
+        /// Set item value on Sudoku board
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -83,12 +87,12 @@ namespace Sudoku.Engine
         public void SetField(int y, int x, int value)
         {
             board.PutCell(new Location(y, x), value);
-            BoardHistory.AddItem(y, x, value);
+            boardHistory.AddItem(y, x, value);
         }
 
 
         /// <summary>
-        /// Returns information if Sudoku game is valid
+        /// Returns information if Sudoku game can be solved
         /// </summary>
         /// <returns></returns>
         public bool ValidateGame()
@@ -106,7 +110,7 @@ namespace Sudoku.Engine
         {
             int[,] gameBoard = new int[9, 9];
 
-            // remove new lines and spaces
+            // remove new lines and empty spaces
             var boardString = board.ToString().Replace(" ", "").ToArray().Where(c => c != '\n').ToList();
 
             int row = 0;
@@ -149,7 +153,7 @@ namespace Sudoku.Engine
         /// <returns></returns>
         public List<HistoryItem> GetHistoryItems()
         {
-            return BoardHistory.Items;
+            return boardHistory.Items;
         }
 
         /// <summary>
@@ -176,11 +180,13 @@ namespace Sudoku.Engine
         /// <param name="state"></param>
         private void CheckColumn(int y, SudokuState state)
         {
-            var filledRow = board.Find.FilledLocations().Where(c => c.Column == y);
+            // get filled fields in row y
+            var filledRowLocations = board.Find.FilledLocations().Where(c => c.Column == y);
 
             var columns = new Dictionary<Location, int>();
 
-            foreach (var column in filledRow)
+            /// get values 
+            foreach (var column in filledRowLocations)
             {
                 columns[column] = board.GetCell(column.Index);
             }

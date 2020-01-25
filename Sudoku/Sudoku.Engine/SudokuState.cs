@@ -3,7 +3,7 @@
 namespace Sudoku.Engine
 {
     /// <summary>
-    /// Information about Sudoku state. If it is valid or not
+    /// Information about Sudoku state. If it has duplicates 
     /// </summary>
     public class SudokuState
     {
