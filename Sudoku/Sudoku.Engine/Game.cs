@@ -26,13 +26,15 @@ namespace Sudoku.Engine
             switch (gameLevel)
             {
                 case GameLevel.Easy:
-                    board = Factory.Puzzle(0, 1, 3, 0);
+                    // removes one quad and two pairs, three singles
+                    board = Factory.Puzzle(0, 1, 4, 0);
                     break;
                 case GameLevel.Medium:
-                    board = Factory.Puzzle(0, 4, 60, 80);
+                    // removes four quads and 20 paris, 10 singles
+                    board = Factory.Puzzle(0, 4, 16, 0);
                     break;
                 case GameLevel.Hard:
-                    board = Factory.Puzzle(2, 34, 0, 0);
+                    board = Factory.Puzzle(0, 16, 48, 0);
                     break;
             }
 
@@ -97,6 +99,7 @@ namespace Sudoku.Engine
 
         /// <summary>
         /// Returns current game board with currently filled values
+        /// Used because SudokuSharp has board in string
         /// </summary>
         /// <returns></returns>
         public int[,] CurrentGameBoard()
