@@ -29,5 +29,5 @@ Project consists of few projects:
 Test were divided between GUI and Engine and can be found here:
 ### GUI:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI.Tests
-### ENGINE
+### ENGINE:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.Engine.Tests
