@@ -26,7 +26,7 @@ namespace Sudoku.Engine
             switch (gameLevel)
             {
                 case GameLevel.Easy:
-                    board = Factory.Puzzle(0, 4, 30, 40);
+                    board = Factory.Puzzle(0, 1, 3, 0);
                     break;
                 case GameLevel.Medium:
                     board = Factory.Puzzle(0, 4, 60, 80);
