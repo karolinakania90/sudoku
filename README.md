@@ -27,5 +27,7 @@ Project consists of few projects:
 ## Sudoku Test
 
 Test were divided between GUI and Engine and can be found here:
+### GUI:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI.Tests
-https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI.Tests
+### ENGINE
+https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.Engine.Tests
