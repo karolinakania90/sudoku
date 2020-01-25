@@ -31,3 +31,6 @@ Test were divided between GUI and Engine and can be found here:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI.Tests
 ### ENGINE:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.Engine.Tests
+
+# Game Installer can be found here:
+https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI/Installer
