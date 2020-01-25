@@ -16,6 +16,8 @@ Project consists of few projects:
   This is test project used for testing application logic
 - Sudoku.GUI
   This is a project containing GUI for sudoku game, using Sudoku.Engine as game logic.
+- Sudoku.GUI.Tests
+  This is test project used for testing GUI
 
 ## Sudoku.Engine - documentation 
 [Documentation for Sudoku.Engine](Sudoku/Sudoku.Engine/articles/intro.md)
@@ -31,6 +33,6 @@ Test were divided between GUI and Engine and can be found here:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI.Tests
 ### ENGINE:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.Engine.Tests
-
+>
 # Game Installer can be found here:
 https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI/Installer
