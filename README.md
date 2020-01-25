@@ -24,3 +24,8 @@ Project consists of few projects:
 
 [Description for Sudoku.GUI](Sudoku/Sudoku.GUI/articles/description.md)
 
+## Sudoku Test
+
+Test were divided between GUI and Engine and can be found here:
+https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI.Tests
+https://github.com/karolinakania90/sudoku/tree/master/Sudoku/Sudoku.GUI.Tests
